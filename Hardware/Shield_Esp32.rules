@@ -11,7 +11,7 @@
     (via_costs 50)
     (plane_via_costs 5)
     (start_ripup_costs 100)
-    (start_pass_no 4)
+    (start_pass_no 218)
     (layer_rule F.Cu
       (active on)
       (preferred_direction horizontal)
@@ -29,7 +29,15 @@
     (width 508.0)
     (clear 508.0)
     (clear 254.0 (type smd_to_turn_gap))
-    (clear 127.0 (type smd-smd))
+  )
+  (padstack "Via[0-1]_1800:600_um"
+    (shape
+      (circle F.Cu 1800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 1800.0 0.0 0.0)
+    )
+    (attach off)
   )
   (padstack "Via[0-1]_800:400_um"
     (shape
@@ -41,6 +49,15 @@
     (attach off)
   )
   (via 
+    "Via[0-1]_1800:600_um" "Via[0-1]_1800:600_um" default
+  )
+  (via 
+    "Via[0-1]_1800:600_um-kicad_default" "Via[0-1]_1800:600_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_1800:600_um-Power" "Via[0-1]_1800:600_um" Power
+  )
+  (via 
     "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
   )
   (via 
@@ -50,13 +67,13 @@
     "Via[0-1]_800:400_um-Power" "Via[0-1]_800:400_um" Power
   )
   (via_rule
-    default "Via[0-1]_800:400_um"
+    "kicad_default" "Via[0-1]_1800:600_um-kicad_default"
   )
   (via_rule
-    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+    default "Via[0-1]_1800:600_um"
   )
   (via_rule
-    Power "Via[0-1]_800:400_um-Power"
+    Power "Via[0-1]_1800:600_um"
   )
   (class default
     D32 D33 "Net-(D3-Pad1)" TX0 RX0 ADC2 ADC3 ADC0
@@ -86,7 +103,7 @@
     )
   )
   (class Power
-    +5V GND +3.3V +5VP
+    GND +5V +3.3V +5VP
     (clearance_class Power)
     (via_rule Power)
     (rule
