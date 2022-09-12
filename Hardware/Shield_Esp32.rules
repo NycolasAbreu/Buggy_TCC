@@ -11,7 +11,7 @@
     (via_costs 50)
     (plane_via_costs 5)
     (start_ripup_costs 100)
-    (start_pass_no 696)
+    (start_pass_no 983)
     (layer_rule F.Cu
       (active on)
       (preferred_direction horizontal)
@@ -82,7 +82,7 @@
     PWM2 PWM2N "unconnected-(J4-Pad1)" "unconnected-(J4-Pad2)" "unconnected-(J4-Pad3)" "unconnected-(J4-Pad4)" "unconnected-(J4-Pad5)" D25
     D26 D27 D14 D12 D13 "unconnected-(J5-Pad1)" D22 D21
     D19 D18 "unconnected-(J5-Pad8)" "unconnected-(J5-Pad9)" "unconnected-(J5-Pad10)" D4 D2 "unconnected-(J5-Pad13)"
-    "Net-(J19-Pad2)" "Net-(J20-Pad2)"
+    "Net-(J19-Pad2)" "Net-(J20-Pad2)" "Net-(J9-Pad2)" "Net-(J15-Pad2)"
     (clearance_class default)
     (via_rule default)
     (rule

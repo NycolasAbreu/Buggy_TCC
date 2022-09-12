@@ -7,7 +7,7 @@
   (title_block
     (title "ESP32 Shield for LPAE Automated Buggy")
     (date "2022-08-18")
-    (rev "0.3")
+    (rev "0.5")
     (company "Nycolas Coelho de Abreu IFSC - Florianópolis")
   )
 

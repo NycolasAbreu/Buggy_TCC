@@ -12,12 +12,15 @@ def main():
     m2  = PWM(Pin(18), frequency)
     m2n = PWM(Pin(19), frequency)
     
-    m1.duty(DutyPercentage(20))
-    m1n.duty(DutyPercentage(50))
-    m2.duty(DutyPercentage(70))
-    m2n.duty(DutyPercentage(95))
-    
-    time.sleep(30)
+    m1.duty(DutyPercentage(50))
+    m1n.duty(DutyPercentage(0))
+    m2.duty(DutyPercentage(50))
+    m2n.duty(DutyPercentage(0))
+    print(m1)
+    print(m1n)
+    print(m2)
+    print(m2n)
+    time.sleep(3)
 
 if __name__ == '__main__':
     main()
