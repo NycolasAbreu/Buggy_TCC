@@ -16,7 +16,7 @@ class Ultrassom:
 
         self.echo = Pin(self.ECHO0, mode=Pin.IN, pull=None)
 
-    def _send_pulse_and_wait(self):
+    def _envia_pulso_e_espera(self):
         self.trigger.value(0) # Aguarda a estabilizacao do sensor
         time.sleep_us(2)
         self.trigger.value(1) # Envia pulso por 10us
@@ -25,15 +25,15 @@ class Ultrassom:
         pulse_time = machine.time_pulse_us(self.echo, 1, self.echo_timeout_us)
         return pulse_time     # Retorna o tempo de retorno do pulso em us
 
-    def distance_cm(self):
-        pulse_time = self._send_pulse_and_wait()
+    def distancia_cm(self):
+        pulse_time = self._envia_pulso_e_espera()
 
         # Calculo da distância é pulse_time / 2 (o pulso vai e volta)
-        # e dividido por 29,1 porque a velocidade do som no ar é 0.034320 cm/us
-        # que é 1 cm cada 29.1us
-        cms = (pulse_time / 2) / 29.1
+        # e dividido por 29,13 porque a velocidade do som no ar é 0.034320 cm/us
+        # que é 1 cm cada 29.13us
+        cms = (pulse_time / 2) / 29.1375
         return cms
 
 if __name__ == '__main__':
     ultrassom = Ultrassom()
-    print(ultrassom.distance_cm())
+    print(ultrassom.distancia_cm())
