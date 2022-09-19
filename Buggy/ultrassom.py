@@ -5,8 +5,8 @@ class Ultrassom:
     """Classe para controlar o ultrassom do buggy"""
 
     # Pinos do PWM
-    TRIG0 = 33
-    ECHO0 = 32
+    TRIG0 = 27
+    ECHO0 = 14
 
     def __init__(self, echo_timeout_us=6000):
         self.echo_timeout_us = echo_timeout_us  # Timeout para a resposta do echo
