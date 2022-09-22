@@ -41,5 +41,6 @@ class Baterias:
 if __name__ == '__main__':
     baterias = Baterias()
     while(1):
+        time.sleep(1)
         print("bateria1 = ", baterias.bateria1())
         print("bateria2 = ", baterias.bateria2())
