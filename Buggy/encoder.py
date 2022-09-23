@@ -1,11 +1,12 @@
 from machine import Pin
+import machine
 from time import time
 
 class Encoder:
     """Classe para controlar os Encoders de velocidade"""
     
     IRQ = 20  # Num de interrupções por revolução
-    INTERVALO = 0.1  # Frequencia que sera calculado o rpm
+    INTERVALO = 0.5  # Frequencia que sera calculado o rpm
     
     # Recebe o pino do encoder pelo construtor
     def __init__(self, pinEncoder):
@@ -23,16 +24,16 @@ class Encoder:
 
     def monitorRPM(self):
         if (time() - self.time0) > self.INTERVALO:
+          state = machine.disable_irq()
           self.freq = self.counter/(time() - self.time0)
           self.rpm = self.freq/self.IRQ*60
           self.counter = 0  # Reseta o counter para a próxima revolução
           self.time0 = time()  # Reseta o timer para próximo intervalo
+          machine.enable_irq(state)
         return self.rpm
 
 if __name__ == "__main__":
     encoder1 = Encoder(2)
     encoder2 = Encoder(4)
     while True:
-        encoder1.rpm = encoder1.monitorRPM()
-        encoder2.rpm = encoder2.monitorRPM()
-        print("rpm1:{0} rpm2:{1}".format(encoder1.rpm, encoder2.rpm))
+        print("rpm1:{0} rpm2:{1}".format(encoder1.monitorRPM(), encoder2.monitorRPM()))

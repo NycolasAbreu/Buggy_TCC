@@ -27,14 +27,14 @@ class Motor:
         self.m2.duty(0)
         self.m2n.duty(0)
         
-    def porcentagem_duty(self, porcentagem):
+    def _porcentagem_duty(self, porcentagem):
         return int((porcentagem * 1023) / 100)
         
     def mover_frente(self, porcentagem):
         self.parar()
         time.sleep(1)
         if (porcentagem > 0) and (porcentagem <= 100):
-            duty = self.porcentagem_duty(porcentagem)
+            duty = self._porcentagem_duty(porcentagem)
             self.m1.duty(duty)
             self.m2.duty(duty)
         
@@ -42,7 +42,7 @@ class Motor:
         self.parar()
         time.sleep(1)
         if (porcentagem > 0) and (porcentagem <= 100):
-            duty = self.porcentagem_duty(porcentagem)
+            duty = self._porcentagem_duty(porcentagem)
             self.m1n.duty(duty)
             self.m2n.duty(duty)
         
@@ -50,7 +50,7 @@ class Motor:
         self.parar()
         time.sleep(1)
         if (porcentagem > 0) and (porcentagem <= 100):
-            duty = self.porcentagem_duty(porcentagem)
+            duty = self._porcentagem_duty(porcentagem)
             self.m1.duty(duty)
             self.m2n.duty(duty)
         
@@ -58,7 +58,7 @@ class Motor:
         self.parar()
         time.sleep(1)
         if (porcentagem > 0) and (porcentagem <= 100):
-            duty = self.porcentagem_duty(porcentagem)
+            duty = self._porcentagem_duty(porcentagem)
             self.m1n.duty(duty)
             self.m2.duty(duty)
 
