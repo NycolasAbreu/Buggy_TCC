@@ -34,7 +34,7 @@ if __name__ == '__main__':
     
     motores.parar()
     
-    while (dir != 'q'):
+    while (dir != 'q' and dir != 'Q'):
         dir = input()
 
         if dir == 'p' or dir == 'P':
