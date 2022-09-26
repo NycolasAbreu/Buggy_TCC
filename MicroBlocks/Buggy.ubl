@@ -1,0 +1,38 @@
+module Buggy
+author unknown
+version 1 0 
+description ''
+
+  spec 'r' 'Obstáculo na Direita?' 'Obstáculo na Direita?'
+  spec 'r' 'Obstáculo na Esquerda?' 'Obstáculo na Esquerda?'
+  spec 'r' 'dist' 'Distância (cm)'
+
+to 'Obstáculo na Direita?' {
+  local 'pin' 26
+  return (digitalReadOp pin)
+}
+
+to 'Obstáculo na Esquerda?' {
+  local 'pin' 25
+  return (digitalReadOp pin)
+}
+
+to dist {
+  comment 'HC-SR04 Sensor Ultrassom
+Retorna o valor da distância em cm'
+  local 'Trigger' 27
+  local 'Echo' 14
+  digitalWriteOp Trigger false
+  waitMicros 2
+  digitalWriteOp Trigger true
+  waitMicros 50
+  digitalWriteOp Trigger false
+  local 'start' (microsOp)
+  waitUntil (or (not (digitalReadOp Echo)) (((microsOp) - start) > 23320))
+  waitUntil (or (digitalReadOp Echo) (((microsOp) - start) > 23320))
+  local 'init' (microsOp)
+  waitUntil (or (not (digitalReadOp Echo)) (((microsOp) - init) > 23320))
+  local 'end' (microsOp)
+  return ((10 * (end - init)) / 583)
+}
+
