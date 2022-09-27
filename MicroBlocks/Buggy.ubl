@@ -6,6 +6,65 @@ description ''
   spec 'r' 'Obstáculo na Direita?' 'Obstáculo na Direita?'
   spec 'r' 'Obstáculo na Esquerda?' 'Obstáculo na Esquerda?'
   spec 'r' 'dist' 'Distância (cm)'
+  spec ' ' 'Mover direita' 'Mover direita _ (0 - 100%)' 'auto' 100
+  spec ' ' 'Mover esquerda' 'Mover esquerda _ (0 - 100%)' 'auto' 100
+  spec ' ' 'Mover frente' 'Mover frente _ (0 - 100%)' 'num' 100
+  spec ' ' 'Mover ré' 'Mover ré _ (0 - 100%)' 'auto' 100
+  spec ' ' 'Parar motores' 'Parar motores'
+  spec 'r' 'Bateria 1' 'Bateria 1'
+  spec 'r' 'Bateria 2' 'Bateria 2'
+
+to 'Mover direita' perc {
+  'Parar motores'
+  if (perc > 100) {
+    perc = 100
+  }
+  if (perc < 0) {
+    perc = 0
+  }
+  local 'duty' ((perc * 1023) / 100)
+  analogWriteOp 22 duty
+  analogWriteOp 18 duty
+}
+
+to 'Mover esquerda' perc {
+  'Parar motores'
+  if (perc > 100) {
+    perc = 100
+  }
+  if (perc < 0) {
+    perc = 0
+  }
+  local 'duty' ((perc * 1023) / 100)
+  analogWriteOp 21 duty
+  analogWriteOp 19 duty
+}
+
+to 'Mover frente' perc {
+  'Parar motores'
+  if (perc > 100) {
+    perc = 100
+  }
+  if (perc < 0) {
+    perc = 0
+  }
+  local 'duty' ((perc * 1023) / 100)
+  analogWriteOp 21 duty
+  analogWriteOp 18 duty
+}
+
+to 'Mover ré' perc {
+  'Parar motores'
+  if (perc > 100) {
+    perc = 100
+  }
+  if (perc < 0) {
+    perc = 0
+  }
+  local 'duty' ((perc * 1023) / 100)
+  analogWriteOp 22 duty
+  analogWriteOp 19 duty
+}
 
 to 'Obstáculo na Direita?' {
   local 'pin' 26
@@ -15,6 +74,13 @@ to 'Obstáculo na Direita?' {
 to 'Obstáculo na Esquerda?' {
   local 'pin' 25
   return (digitalReadOp pin)
+}
+
+to 'Parar motores' {
+  analogWriteOp 21 0
+  analogWriteOp 22 0
+  analogWriteOp 18 0
+  analogWriteOp 19 0
 }
 
 to dist {
@@ -34,5 +100,19 @@ Retorna o valor da distância em cm'
   waitUntil (or (not (digitalReadOp Echo)) (((microsOp) - init) > 23320))
   local 'end' (microsOp)
   return ((10 * (end - init)) / 583)
+}
+
+to 'Bateria 1' {
+  comment 'Não é possível fazer cálculos com numeros decimais,
+sendo assim, é retornado apenas o valor digital de
+0 a 1023.'
+  return (analogReadOp 32)
+}
+
+to 'Bateria 2' {
+  comment 'Não é possível fazer cálculos com numeros decimais,
+sendo assim, é retornado apenas o valor digital de
+0 a 1023.'
+  return (analogReadOp 33)
 }
 
