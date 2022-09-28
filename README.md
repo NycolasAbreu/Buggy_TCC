@@ -58,6 +58,16 @@ O projeto segue as informações disponíveis em https://github.com/xtarke/autom
 
 ![Shield](./images/shield.png "Shield")
 
+## Exemplo de funcionamento no MicroBlocks
+
+- Recebe os valores dos sensores
+- Caso não tenha obstáculo, seguirá em frente
+- Caso tenha obstáculo na direita, se move a direita
+- Caso tenha obstáculo na esquerda, se move a esquerda
+- Caso tenha obstáculo em ambos os lados, para os motores
+
+![Seguir Linha](./images/Exemplo%20seguidor%20de%20linha.png "Seguir Linha")
+
 ## Block IDEs
 
 - https://microblocks.fun/

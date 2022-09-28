@@ -8,14 +8,14 @@ import time
 PIN_ENC1 = 2
 PIN_ENC2 = 4
 
-def mostrar_sensores(ultrassom, sensoresLinha, encoder1, encoder2, baterias):
+def MostrarSensores(ultrassom, sensoresLinha, encoder1, encoder2, baterias):
     print("BAT1: {0}V BAT2: {1}V".format(baterias.bateria1(), baterias.bateria2()))
     print("rpm1: {0} rpm2: {1}".format(encoder1.monitorRPM(), encoder2.monitorRPM()))
     print("ESTADO DIREITA = ", sensoresLinha.direita())
     print("ESTADO ESQUERDA = ", sensoresLinha.esquerda())
     print("Distancia = ", ultrassom.distancia_cm())
-
-if __name__ == '__main__':
+    
+def ControleTeclado():
     motores = Motor()
     baterias = Baterias()
     encoder1 = Encoder(PIN_ENC1)
@@ -33,6 +33,7 @@ if __name__ == '__main__':
     print('q: sair')
     
     motores.parar()
+    dir = 0
     
     while (dir != 'q' and dir != 'Q'):
         dir = input()
@@ -40,15 +41,46 @@ if __name__ == '__main__':
         if dir == 'p' or dir == 'P':
             motores.parar()
         if dir == 'w' or dir == 'W':
-            motores.mover_frente(30)
+            motores.mover_frente(80)
         if dir == 's' or dir == 'S':
-            motores.mover_re(30)
+            motores.mover_re(80)
         if dir == 'a' or dir == 'A':
-            motores.mover_esquerda(40)
+            motores.mover_esquerda(80)
         if dir == 'd' or dir == 'D':
-            motores.mover_direita(40)
+            motores.mover_direita(80)
             
         time.sleep(1)
         motores.parar()
-        
-    mostrar_sensores(ultrassom, sensoresLinha, encoder1, encoder2, baterias)
+    MostrarSensores(ultrassom, sensoresLinha, encoder1, encoder2, baterias)
+
+def SeguirLinha():
+    motores = Motor()
+    baterias = Baterias()
+    encoder1 = Encoder(PIN_ENC1)
+    encoder2 = Encoder(PIN_ENC2)
+    sensoresLinha = SensorLinha()
+    ultrassom = Ultrassom()
+    
+    print('Bem vindo Ao Buggy')
+    print('Irei seguir a linha')
+    
+    while True:
+        direita = sensoresLinha.direita()
+        esquerda = sensoresLinha.esquerda()
+    
+        print(str(esquerda)+"-"+str(direita))
+    
+        if direita==0 and esquerda==0:
+            motores.mover_frente(50)
+        elif direita==1 and esquerda==0:
+            motores.mover_direita(80)
+        elif direita==0 and esquerda==1:
+            motores.mover_esquerda(80)
+        else:
+            motores.parar()
+            
+    MostrarSensores(ultrassom, sensoresLinha, encoder1, encoder2, baterias)
+    
+if __name__ == '__main__':
+    #ControleTeclado()
+    SeguirLinha()

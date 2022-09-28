@@ -1,0 +1,142 @@
+module main
+author unknown
+version 1 0 
+description ''
+
+script 136 51 {
+whenStarted
+forever {
+  local 'direita' ('Obstáculo na Direita?')
+  local 'esquerda' ('Obstáculo na Esquerda?')
+  sayIt direita '-' esquerda
+  if (and (direita == (booleanConstant false)) (esquerda == (booleanConstant false))) {
+    'Mover frente' 70
+  } (and (direita == (booleanConstant true)) (esquerda == (booleanConstant false))) {
+    'Mover direita' 100
+  } (and (direita == (booleanConstant false)) (esquerda == (booleanConstant true))) {
+    'Mover esquerda' 100
+  } else {
+    'Parar motores'
+  }
+}
+}
+
+
+module Buggy
+author unknown
+version 1 0 
+description ''
+
+  spec 'r' 'Obstáculo na Direita?' 'Obstáculo na Direita?'
+  spec 'r' 'Obstáculo na Esquerda?' 'Obstáculo na Esquerda?'
+  spec 'r' 'dist' 'Distância (cm)'
+  spec ' ' 'Mover direita' 'Mover direita _ (0 - 100%)' 'auto' 100
+  spec ' ' 'Mover esquerda' 'Mover esquerda _ (0 - 100%)' 'auto' 100
+  spec ' ' 'Mover frente' 'Mover frente _ (0 - 100%)' 'num' 100
+  spec ' ' 'Mover ré' 'Mover ré _ (0 - 100%)' 'auto' 100
+  spec ' ' 'Parar motores' 'Parar motores'
+  spec 'r' 'Bateria 1' 'Bateria 1'
+  spec 'r' 'Bateria 2' 'Bateria 2'
+
+to 'Bateria 1' {
+  comment 'Não é possível fazer cálculos com numeros decimais,
+sendo assim, é retornado apenas o valor digital de
+0 a 1023.'
+  return (analogReadOp 32)
+}
+
+to 'Bateria 2' {
+  comment 'Não é possível fazer cálculos com numeros decimais,
+sendo assim, é retornado apenas o valor digital de
+0 a 1023.'
+  return (analogReadOp 33)
+}
+
+to 'Mover direita' perc {
+  'Parar motores'
+  if (perc > 100) {
+    perc = 100
+  }
+  if (perc < 0) {
+    perc = 0
+  }
+  local 'duty' ((perc * 1023) / 100)
+  analogWriteOp 22 duty
+  analogWriteOp 18 duty
+}
+
+to 'Mover esquerda' perc {
+  'Parar motores'
+  if (perc > 100) {
+    perc = 100
+  }
+  if (perc < 0) {
+    perc = 0
+  }
+  local 'duty' ((perc * 1023) / 100)
+  analogWriteOp 21 duty
+  analogWriteOp 19 duty
+}
+
+to 'Mover frente' perc {
+  'Parar motores'
+  if (perc > 100) {
+    perc = 100
+  }
+  if (perc < 0) {
+    perc = 0
+  }
+  local 'duty' ((perc * 1023) / 100)
+  analogWriteOp 21 duty
+  analogWriteOp 18 duty
+}
+
+to 'Mover ré' perc {
+  'Parar motores'
+  if (perc > 100) {
+    perc = 100
+  }
+  if (perc < 0) {
+    perc = 0
+  }
+  local 'duty' ((perc * 1023) / 100)
+  analogWriteOp 22 duty
+  analogWriteOp 19 duty
+}
+
+to 'Obstáculo na Direita?' {
+  local 'pin' 26
+  return (digitalReadOp pin)
+}
+
+to 'Obstáculo na Esquerda?' {
+  local 'pin' 25
+  return (digitalReadOp pin)
+}
+
+to 'Parar motores' {
+  analogWriteOp 21 0
+  analogWriteOp 22 0
+  analogWriteOp 18 0
+  analogWriteOp 19 0
+}
+
+to dist {
+  comment 'HC-SR04 Sensor Ultrassom
+Retorna o valor da distância em cm'
+  local 'Trigger' 27
+  local 'Echo' 14
+  digitalWriteOp Trigger false
+  waitMicros 2
+  digitalWriteOp Trigger true
+  waitMicros 50
+  digitalWriteOp Trigger false
+  local 'start' (microsOp)
+  waitUntil (or (not (digitalReadOp Echo)) (((microsOp) - start) > 23320))
+  waitUntil (or (digitalReadOp Echo) (((microsOp) - start) > 23320))
+  local 'init' (microsOp)
+  waitUntil (or (not (digitalReadOp Echo)) (((microsOp) - init) > 23320))
+  local 'end' (microsOp)
+  return ((10 * (end - init)) / 583)
+}
+

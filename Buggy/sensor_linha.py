@@ -9,7 +9,7 @@ class SensorLinha:
     L_TCRT = 25
     
     # Contagem para o debounce
-    CONTAGEM = 100
+    CONTAGEM = 10
     
     def __init__(self):
         self.sensor_direita = Pin(self.R_TCRT, Pin.IN)
@@ -46,7 +46,7 @@ class SensorLinha:
     def esquerda(self):
         return self.estado_esquerda
 
-    def init_timer(self, period_ms = 10):  # Cria um timer para atualizar o pulse_time a cada 500ms
+    def init_timer(self, period_ms = 5):
         self.tim1.init(period=period_ms, mode=Timer.PERIODIC, callback=self._recebe_valores)
     
 if __name__ == '__main__':
