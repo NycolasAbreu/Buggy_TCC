@@ -3,7 +3,7 @@ author unknown
 version 1 0 
 description ''
 
-script 136 51 {
+script 103 50 {
 whenStarted
 forever {
   local 'direita' ('Obstáculo na Direita?')
@@ -26,6 +26,7 @@ module Buggy
 author unknown
 version 1 0 
 description ''
+variables contador 'pulsos segundo' 
 
   spec 'r' 'Obstáculo na Direita?' 'Obstáculo na Direita?'
   spec 'r' 'Obstáculo na Esquerda?' 'Obstáculo na Esquerda?'
@@ -37,6 +38,8 @@ description ''
   spec ' ' 'Parar motores' 'Parar motores'
   spec 'r' 'Bateria 1' 'Bateria 1'
   spec 'r' 'Bateria 2' 'Bateria 2'
+  spec ' ' 'Pulsos por segundo' 'Pulsos por segundo'
+  spec ' ' 'contador encoder' 'Contador encoder'
 
 to 'Bateria 1' {
   comment 'Não é possível fazer cálculos com numeros decimais,
@@ -119,6 +122,29 @@ to 'Parar motores' {
   analogWriteOp 22 0
   analogWriteOp 18 0
   analogWriteOp 19 0
+}
+
+to 'Pulsos por segundo' {
+  forever {
+    waitMillis 1000
+    'pulsos segundo' = contador
+    contador = 0
+  }
+}
+
+to 'contador encoder' {
+  local 'lido' 0
+  contador = 0
+  forever {
+    if (and ((digitalReadOp 4) == (booleanConstant true)) (lido == 0)) {
+      contador = (contador + 1)
+      lido = 1
+    } ((digitalReadOp 4) == (booleanConstant false)) {
+      lido = 0
+    } else {
+      comment 'Não faz nada'
+    }
+  }
 }
 
 to dist {
