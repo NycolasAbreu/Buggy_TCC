@@ -4,8 +4,8 @@ version 1 0
 description ''
 variables contador 'pulsos segundo' 
 
-  spec 'r' 'Obstáculo na Direita?' 'Obstáculo na Direita?'
-  spec 'r' 'Obstáculo na Esquerda?' 'Obstáculo na Esquerda?'
+  spec 'r' 'Sensor Direita' 'Sensor Direita'
+  spec 'r' 'Sensor Esquerda' 'Sensor Esquerda'
   spec 'r' 'dist' 'Distância (cm)'
   spec ' ' 'Mover direita' 'Mover direita _ (0 - 100%)' 'auto' 100
   spec ' ' 'Mover esquerda' 'Mover esquerda _ (0 - 100%)' 'auto' 100
@@ -69,12 +69,12 @@ to 'Mover ré' perc {
   analogWriteOp 19 duty
 }
 
-to 'Obstáculo na Direita?' {
+to 'Sensor Direita' {
   local 'pin' 26
   return (digitalReadOp pin)
 }
 
-to 'Obstáculo na Esquerda?' {
+to 'Sensor Esquerda' {
   local 'pin' 25
   return (digitalReadOp pin)
 }

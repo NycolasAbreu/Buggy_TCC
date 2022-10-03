@@ -1,23 +1,23 @@
 <xml xmlns="https://bipes.net.br">
   <workspace>
     <field name="DEVICE">ESP32</field>
-    <field name="TIMESTAMP">1664761287514</field>
+    <field name="TIMESTAMP">1664808652934</field>
     <freeboard><![CDATA[{"version":1,"allow_edit":true,"plugins":[],"panes":[],"datasources":[],"columns":3}]]></freeboard>
-    <databoard><![CDATA[{"currentWorkspace":"kvfgejtdtlhg0wfqod9","workspace:kvfgejtdtlhg0wfqod9":[]}]]></databoard> 
+    <databoard><![CDATA[{"currentWorkspace":"l8lp0vtxk4or2r948l","workspace:l8lp0vtxk4or2r948l":[]}]]></databoard> 
   </workspace>
   <variables>
     <variable id="d.8aRL!d#HJTrw`y4ebJ">perc</variable>
     <variable id="#JZYtnHX:@3cYS#4nt;]">Porcentagem 0 - 100%</variable>
-    <variable id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</variable>
     <variable id="{`+wqxf,Udqw)tV6k94O">_tempo</variable>
-    <variable id="$s#WTnlpRG5Y{Ey^m)*w">_rpm</variable>
+    <variable id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</variable>
     <variable id="3FcM%nnO{_+s#H-EIE)$">_bat1</variable>
+    <variable id="$s#WTnlpRG5Y{Ey^m)*w">_rpm</variable>
     <variable id="K5n#6N1[b}De]AMDc6_k">Duty</variable>
     <variable id="sv5k.E]6iJ-wOS`2A4fi">_contagem direita</variable>
-    <variable id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</variable>
     <variable id="35y985,6J/Vj`Wl79{:B">_contagem encoder</variable>
-    <variable id="8bD,fd-od2:QSI?!dO3q">_freq</variable>
+    <variable id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</variable>
     <variable id="fl9m#E6%:!GcE#_SX:fB">_bat2</variable>
+    <variable id="8bD,fd-od2:QSI?!dO3q">_freq</variable>
     <variable id="}8UPObV_;(vEIHq+0tJt">_contagem esquerda</variable>
   </variables>
   <block type="procedures_defreturn" id="ve8y0~0V@3W/n)cnN4a3" collapsed="true" x="-313" y="-412">
@@ -175,7 +175,7 @@
               <block type="math_arithmetic" id="*m*jD)s{S%cV47pQ[Q~=">
                 <field name="OP">MINUS</field>
                 <value name="A">
-                  <shadow type="math_number" id="yqr_NAihY+Z0sS7M#=ZR">
+                  <shadow xmlns="https://bipes.net.br" type="math_number" id="yqr_NAihY+Z0sS7M#=ZR">
                     <field name="NUM">1</field>
                   </shadow>
                   <block type="variables_get" id="0YG)4y|Vc6OLx@CfL3==">
@@ -275,7 +275,7 @@
                   <block type="math_arithmetic" id="vc={2|hR)4,n$-40vA70">
                     <field name="OP">MINUS</field>
                     <value name="A">
-                      <shadow type="math_number">
+                      <shadow xmlns="https://bipes.net.br" type="math_number">
                         <field name="NUM">1</field>
                       </shadow>
                       <block type="variables_get" id="5c.}SlJuTl$VFyVk5R=8">
@@ -419,77 +419,132 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="mn[Q#zM!wxq[jcAPpj%@" collapsed="true" x="187" y="-413">
-    <field name="NAME">Config Encoder</field>
+  <block type="procedures_defreturn" id="CMVKtE)D5|V;/SNxDS5L" collapsed="true" x="187" y="-413">
+    <field name="NAME">RPM</field>
     <comment pinned="false" h="80" w="160">Describe this function...</comment>
     <statement name="STACK">
-      <block type="variables_set" id=".C_(X?/{c5#rr`3f%Dsi">
-        <field name="VAR" id="{`+wqxf,Udqw)tV6k94O">_tempo</field>
-        <value name="VALUE">
-          <block type="utime.vars" id="r-jloYxp!*|,SWC,cso[">
-            <field name="VARS">time</field>
+      <block type="controls_if" id="vdi3Ive_@2U28.b_ZX5{">
+        <value name="IF0">
+          <block type="logic_compare" id="10Jbw]Ey^L;=,~VJtYx3">
+            <field name="OP">GT</field>
+            <value name="A">
+              <block type="math_arithmetic" id=",h1WgkK?Wyl0:Iw{s1UM">
+                <field name="OP">MINUS</field>
+                <value name="A">
+                  <shadow xmlns="https://bipes.net.br" type="math_number" id="-/B{[Y/{f2hr:I^?qnP]">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="utime.vars" id="b7]Fce9|kfw+r`{6y5]:">
+                    <field name="VARS">time</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <shadow xmlns="https://bipes.net.br" type="math_number" id="Y|Ma`;yZ$jNnBdPC=lbS">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="variables_get" id="Rz52la;AD}u6V=-+?e^M">
+                    <field name="VAR" id="{`+wqxf,Udqw)tV6k94O">_tempo</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="%,]AE,*;k:rg_hvl:3B=">
+                <field name="NUM">1</field>
+              </block>
+            </value>
           </block>
         </value>
-        <next>
-          <block type="variables_set" id="r7j-5[Nm+`TBb[Lhlj$F">
-            <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
+        <statement name="DO0">
+          <block type="variables_set" id="9(JfSBM9GLz+[}s=jL((">
+            <field name="VAR" id="8bD,fd-od2:QSI?!dO3q">_freq</field>
             <value name="VALUE">
-              <block type="math_number" id="LQ/RB_!n3,#Py!]P7Xb!">
-                <field name="NUM">0</field>
+              <block type="math_arithmetic" id="p62_Dag!;x|jN3H23H_=">
+                <field name="OP">DIVIDE</field>
+                <value name="A">
+                  <shadow xmlns="https://bipes.net.br" type="math_number" id="m2Ue/X7d?WkU+%]uTF_Q">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="variables_get" id=".y_/(5F;,%n6[6b1_UA~">
+                    <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <shadow xmlns="https://bipes.net.br" type="math_number" id="zuKeTGVUxIo:J6ri=T@2">
+                    <field name="NUM">1</field>
+                  </shadow>
+                  <block type="math_arithmetic" id="B!mCe;*@W~[Mm7.:aXt8">
+                    <field name="OP">MINUS</field>
+                    <value name="A">
+                      <shadow xmlns="https://bipes.net.br" type="math_number" id="(NPMJTYfzC4fry]y6Fv1">
+                        <field name="NUM">1</field>
+                      </shadow>
+                      <block type="utime.vars" id="b~k)H.PgF[tNIi;bKp$F">
+                        <field name="VARS">time</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <shadow xmlns="https://bipes.net.br" type="math_number" id="}|37gy9,7-j18Sld7ic#">
+                        <field name="NUM">1</field>
+                      </shadow>
+                      <block type="variables_get" id="f5j8GW$D:TILk:k5PLYr">
+                        <field name="VAR" id="{`+wqxf,Udqw)tV6k94O">_tempo</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
               </block>
             </value>
             <next>
-              <block type="variables_set" id="Y2GB{.~4S0|-Y$|LKQgK">
+              <block type="variables_set" id="7oGQ]6-AbN||/KeHgNwF">
                 <field name="VAR" id="$s#WTnlpRG5Y{Ey^m)*w">_rpm</field>
                 <value name="VALUE">
-                  <block type="math_number" id="w3b$jWi|?]8Ukut[zmz?">
-                    <field name="NUM">0</field>
+                  <block type="math_arithmetic" id="@FJ%?h}qi@0:|jl-m3S}">
+                    <field name="OP">DIVIDE</field>
+                    <value name="A">
+                      <shadow xmlns="https://bipes.net.br" type="math_number" id="?/0XKn_!|gfjB,N2xRY(">
+                        <field name="NUM">1</field>
+                      </shadow>
+                      <block type="variables_get" id="}rxQq?ft3agdBT2gZ+4C">
+                        <field name="VAR" id="8bD,fd-od2:QSI?!dO3q">_freq</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <shadow xmlns="https://bipes.net.br" type="math_number" id=":W@7NP7mNYe+.0YdHAtd">
+                        <field name="NUM">1</field>
+                      </shadow>
+                      <block type="math_arithmetic" id="wd54D5fn.DU^zW`8ZLWy">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <shadow type="math_number" id="@3/$A`pw`m6l2QZDnkmd">
+                            <field name="NUM">20</field>
+                          </shadow>
+                        </value>
+                        <value name="B">
+                          <shadow type="math_number" id="G37xOXTEWCew$6hX=e]f">
+                            <field name="NUM">60</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </value>
                   </block>
                 </value>
                 <next>
-                  <block type="variables_set" id="WuJAJIxZw_up49?KXRmV">
-                    <field name="VAR" id="8bD,fd-od2:QSI?!dO3q">_freq</field>
+                  <block type="variables_set" id="q{nYJvh/4pHS~s5-G000">
+                    <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
                     <value name="VALUE">
-                      <block type="math_number" id="m{Cz|3ZRZk4.zbub}/c-">
+                      <block type="math_number" id="YYeX/l|bPDjkKZvIVopX">
                         <field name="NUM">0</field>
                       </block>
                     </value>
                     <next>
-                      <block type="gpio_interrupt" id="{0-hv%E#Sr+p4{fl|8{)">
-                        <field name="trigger">IRQ_RISING</field>
-                        <value name="pin">
-                          <shadow type="pinout" id="o-`({M{[c_ZN)+s5#G;+">
-                            <field name="DEVICE">ESP32</field>
-                            <field name="PIN">4</field>
-                          </shadow>
-                          <block type="pinout" id="R2?}2@rcCUAN`?SAmZ0I">
-                            <field name="DEVICE">ESP32</field>
-                            <field name="PIN">4</field>
+                      <block type="variables_set" id="ByJ7~Ko$+@m`3.tgdk[(">
+                        <field name="VAR" id="{`+wqxf,Udqw)tV6k94O">_tempo</field>
+                        <value name="VALUE">
+                          <block type="utime.vars" id="^0F-R=_iG_d[6r{jTqFw">
+                            <field name="VARS">time</field>
                           </block>
                         </value>
-                        <statement name="code">
-                          <block type="variables_set" id=".Tv|=P.$^]h(fZRE-dZj">
-                            <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
-                            <value name="VALUE">
-                              <block type="math_arithmetic" id="9oV5JWm2btYJQl64F[.{">
-                                <field name="OP">ADD</field>
-                                <value name="A">
-                                  <shadow type="math_number" id="H`nvq||Tam|^WQq(B*v7">
-                                    <field name="NUM">1</field>
-                                  </shadow>
-                                  <block type="variables_get" id="/vg|ynL%Ib#FoI=nF~/=">
-                                    <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
-                                  </block>
-                                </value>
-                                <value name="B">
-                                  <shadow type="math_number" id="LJ~Kld8l(QtBBrIF7N:L">
-                                    <field name="NUM">1</field>
-                                  </shadow>
-                                </value>
-                              </block>
-                            </value>
-                          </block>
-                        </statement>
                       </block>
                     </next>
                   </block>
@@ -497,9 +552,14 @@
               </block>
             </next>
           </block>
-        </next>
+        </statement>
       </block>
     </statement>
+    <value name="RETURN">
+      <block type="variables_get" id="wT-myTFS9=Ip{hvjltRF">
+        <field name="VAR" id="$s#WTnlpRG5Y{Ey^m)*w">_rpm</field>
+      </block>
+    </value>
   </block>
   <block type="procedures_defnoreturn" id="_c=S^NQhnl=#=g-YeW!O" collapsed="true" x="-63" y="-388">
     <field name="NAME">Config Sensor Linha</field>
@@ -696,132 +756,77 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defreturn" id="CMVKtE)D5|V;/SNxDS5L" collapsed="true" x="188" y="-387">
-    <field name="NAME">RPM</field>
+  <block type="procedures_defnoreturn" id="mn[Q#zM!wxq[jcAPpj%@" collapsed="true" x="188" y="-388">
+    <field name="NAME">Config Encoder</field>
     <comment pinned="false" h="80" w="160">Describe this function...</comment>
     <statement name="STACK">
-      <block type="controls_if" id="vdi3Ive_@2U28.b_ZX5{">
-        <value name="IF0">
-          <block type="logic_compare" id="10Jbw]Ey^L;=,~VJtYx3">
-            <field name="OP">GT</field>
-            <value name="A">
-              <block type="math_arithmetic" id=",h1WgkK?Wyl0:Iw{s1UM">
-                <field name="OP">MINUS</field>
-                <value name="A">
-                  <shadow type="math_number" id="-/B{[Y/{f2hr:I^?qnP]">
-                    <field name="NUM">1</field>
-                  </shadow>
-                  <block type="utime.vars" id="b7]Fce9|kfw+r`{6y5]:">
-                    <field name="VARS">time</field>
-                  </block>
-                </value>
-                <value name="B">
-                  <shadow type="math_number" id="Y|Ma`;yZ$jNnBdPC=lbS">
-                    <field name="NUM">1</field>
-                  </shadow>
-                  <block type="variables_get" id="Rz52la;AD}u6V=-+?e^M">
-                    <field name="VAR" id="{`+wqxf,Udqw)tV6k94O">_tempo</field>
-                  </block>
-                </value>
-              </block>
-            </value>
-            <value name="B">
-              <block type="math_number" id="%,]AE,*;k:rg_hvl:3B=">
-                <field name="NUM">0.5</field>
-              </block>
-            </value>
+      <block type="variables_set" id=".C_(X?/{c5#rr`3f%Dsi">
+        <field name="VAR" id="{`+wqxf,Udqw)tV6k94O">_tempo</field>
+        <value name="VALUE">
+          <block type="utime.vars" id="r-jloYxp!*|,SWC,cso[">
+            <field name="VARS">time</field>
           </block>
         </value>
-        <statement name="DO0">
-          <block type="variables_set" id="9(JfSBM9GLz+[}s=jL((">
-            <field name="VAR" id="8bD,fd-od2:QSI?!dO3q">_freq</field>
+        <next>
+          <block type="variables_set" id="r7j-5[Nm+`TBb[Lhlj$F">
+            <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
             <value name="VALUE">
-              <block type="math_arithmetic" id="p62_Dag!;x|jN3H23H_=">
-                <field name="OP">DIVIDE</field>
-                <value name="A">
-                  <shadow type="math_number" id="m2Ue/X7d?WkU+%]uTF_Q">
-                    <field name="NUM">1</field>
-                  </shadow>
-                  <block type="variables_get" id=".y_/(5F;,%n6[6b1_UA~">
-                    <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
-                  </block>
-                </value>
-                <value name="B">
-                  <shadow type="math_number" id="zuKeTGVUxIo:J6ri=T@2">
-                    <field name="NUM">1</field>
-                  </shadow>
-                  <block type="math_arithmetic" id="B!mCe;*@W~[Mm7.:aXt8">
-                    <field name="OP">MINUS</field>
-                    <value name="A">
-                      <shadow type="math_number" id="(NPMJTYfzC4fry]y6Fv1">
-                        <field name="NUM">1</field>
-                      </shadow>
-                      <block type="utime.vars" id="b~k)H.PgF[tNIi;bKp$F">
-                        <field name="VARS">time</field>
-                      </block>
-                    </value>
-                    <value name="B">
-                      <shadow type="math_number" id="}|37gy9,7-j18Sld7ic#">
-                        <field name="NUM">1</field>
-                      </shadow>
-                      <block type="variables_get" id="f5j8GW$D:TILk:k5PLYr">
-                        <field name="VAR" id="{`+wqxf,Udqw)tV6k94O">_tempo</field>
-                      </block>
-                    </value>
-                  </block>
-                </value>
+              <block type="math_number" id="LQ/RB_!n3,#Py!]P7Xb!">
+                <field name="NUM">0</field>
               </block>
             </value>
             <next>
-              <block type="variables_set" id="7oGQ]6-AbN||/KeHgNwF">
+              <block type="variables_set" id="Y2GB{.~4S0|-Y$|LKQgK">
                 <field name="VAR" id="$s#WTnlpRG5Y{Ey^m)*w">_rpm</field>
                 <value name="VALUE">
-                  <block type="math_arithmetic" id="@FJ%?h}qi@0:|jl-m3S}">
-                    <field name="OP">DIVIDE</field>
-                    <value name="A">
-                      <shadow type="math_number" id="?/0XKn_!|gfjB,N2xRY(">
-                        <field name="NUM">1</field>
-                      </shadow>
-                      <block type="variables_get" id="}rxQq?ft3agdBT2gZ+4C">
-                        <field name="VAR" id="8bD,fd-od2:QSI?!dO3q">_freq</field>
-                      </block>
-                    </value>
-                    <value name="B">
-                      <shadow type="math_number" id=":W@7NP7mNYe+.0YdHAtd">
-                        <field name="NUM">1</field>
-                      </shadow>
-                      <block type="math_arithmetic" id="wd54D5fn.DU^zW`8ZLWy">
-                        <field name="OP">MULTIPLY</field>
-                        <value name="A">
-                          <shadow type="math_number" id="@3/$A`pw`m6l2QZDnkmd">
-                            <field name="NUM">20</field>
-                          </shadow>
-                        </value>
-                        <value name="B">
-                          <shadow type="math_number" id="G37xOXTEWCew$6hX=e]f">
-                            <field name="NUM">60</field>
-                          </shadow>
-                        </value>
-                      </block>
-                    </value>
+                  <block type="math_number" id="w3b$jWi|?]8Ukut[zmz?">
+                    <field name="NUM">0</field>
                   </block>
                 </value>
                 <next>
-                  <block type="variables_set" id="q{nYJvh/4pHS~s5-G000">
-                    <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
+                  <block type="variables_set" id="WuJAJIxZw_up49?KXRmV">
+                    <field name="VAR" id="8bD,fd-od2:QSI?!dO3q">_freq</field>
                     <value name="VALUE">
-                      <block type="math_number" id="YYeX/l|bPDjkKZvIVopX">
+                      <block type="math_number" id="m{Cz|3ZRZk4.zbub}/c-">
                         <field name="NUM">0</field>
                       </block>
                     </value>
                     <next>
-                      <block type="variables_set" id="ByJ7~Ko$+@m`3.tgdk[(">
-                        <field name="VAR" id="{`+wqxf,Udqw)tV6k94O">_tempo</field>
-                        <value name="VALUE">
-                          <block type="utime.vars" id="^0F-R=_iG_d[6r{jTqFw">
-                            <field name="VARS">time</field>
+                      <block type="gpio_interrupt" id="{0-hv%E#Sr+p4{fl|8{)">
+                        <field name="trigger">BOTH</field>
+                        <value name="pin">
+                          <shadow xmlns="https://bipes.net.br" type="pinout" id="o-`({M{[c_ZN)+s5#G;+">
+                            <field name="DEVICE">ESP32</field>
+                            <field name="PIN">4</field>
+                          </shadow>
+                          <block type="pinout" id="R2?}2@rcCUAN`?SAmZ0I">
+                            <field name="DEVICE">ESP32</field>
+                            <field name="PIN">4</field>
                           </block>
                         </value>
+                        <statement name="code">
+                          <block type="variables_set" id=".Tv|=P.$^]h(fZRE-dZj">
+                            <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
+                            <value name="VALUE">
+                              <block type="math_arithmetic" id="9oV5JWm2btYJQl64F[.{">
+                                <field name="OP">ADD</field>
+                                <value name="A">
+                                  <shadow xmlns="https://bipes.net.br" type="math_number" id="H`nvq||Tam|^WQq(B*v7">
+                                    <field name="NUM">1</field>
+                                  </shadow>
+                                  <block type="variables_get" id="/vg|ynL%Ib#FoI=nF~/=">
+                                    <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <shadow type="math_number" id="LJ~Kld8l(QtBBrIF7N:L">
+                                    <field name="NUM">1</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
                       </block>
                     </next>
                   </block>
@@ -829,14 +834,9 @@
               </block>
             </next>
           </block>
-        </statement>
+        </next>
       </block>
     </statement>
-    <value name="RETURN">
-      <block type="variables_get" id="wT-myTFS9=Ip{hvjltRF">
-        <field name="VAR" id="$s#WTnlpRG5Y{Ey^m)*w">_rpm</field>
-      </block>
-    </value>
   </block>
   <block type="procedures_defreturn" id="ah)80[WU,)6.rOkg_Sam" collapsed="true" x="438" y="-387">
     <field name="NAME">Bateria 1</field>
@@ -845,7 +845,7 @@
       <block type="math_arithmetic" id="~T5Ph9(!Z8z+i}2Xy,jy">
         <field name="OP">MULTIPLY</field>
         <value name="A">
-          <shadow type="math_number" id=";%},lMl?br/hpl^Tl|!E">
+          <shadow xmlns="https://bipes.net.br" type="math_number" id=";%},lMl?br/hpl^Tl|!E">
             <field name="NUM">1</field>
           </shadow>
           <block type="variables_get" id="V$j3+bX1I-elE6V2e__0">
@@ -853,7 +853,7 @@
           </block>
         </value>
         <value name="B">
-          <shadow type="math_number" id="]c.uqTP7B=k*cAtyd@:H">
+          <shadow xmlns="https://bipes.net.br" type="math_number" id="]c.uqTP7B=k*cAtyd@:H">
             <field name="NUM">1</field>
           </shadow>
           <block type="math_arithmetic" id="6U}L-[vLhTd`1BTkirWl">
@@ -954,7 +954,7 @@
       <block type="math_arithmetic" id="10M~ps?VgSwYW/gnkHv}">
         <field name="OP">MULTIPLY</field>
         <value name="A">
-          <shadow type="math_number" id="cS_CC0,o?#E2NqZHroTl">
+          <shadow xmlns="https://bipes.net.br" type="math_number" id="cS_CC0,o?#E2NqZHroTl">
             <field name="NUM">1</field>
           </shadow>
           <block type="variables_get" id=".aB;|UmNbJQ%=xp75d_d">
@@ -962,7 +962,7 @@
           </block>
         </value>
         <value name="B">
-          <shadow type="math_number" id="W9(!Z;{!tVB%?;:AU-qK">
+          <shadow xmlns="https://bipes.net.br" type="math_number" id="W9(!Z;{!tVB%?;:AU-qK">
             <field name="NUM">1</field>
           </shadow>
           <block type="math_arithmetic" id="=TVXb0/Q]**F6O/,nJZE">
@@ -1144,54 +1144,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_callnoreturn" id=")QFBt/l$vl1r@;G}X5#7" x="-813" y="-238">
-    <mutation name="Config Baterias"></mutation>
-    <next>
-      <block type="controls_whileUntil" id="7vQ)#EU1sa0}E_z(q)3y">
-        <field name="MODE">WHILE</field>
-        <value name="BOOL">
-          <block type="logic_boolean" id="0J0:W0UM}}{Hf9}/;Na6">
-            <field name="BOOL">TRUE</field>
-          </block>
-        </value>
-        <statement name="DO">
-          <block type="delay" id="%1bW]:$X|qT#a6Nzzum}">
-            <field name="SCALE">sleep</field>
-            <value name="TIME">
-              <shadow type="math_number" id="G:h;-W~5!/sP~nQy7b}e">
-                <field name="NUM">1</field>
-              </shadow>
-            </value>
-            <next>
-              <block type="text_print" id="k-1*~9mWB6hXh[`-IQ(H">
-                <value name="TEXT">
-                  <shadow type="text" id="p*cCYM=mG~PDBX^d#3K9">
-                    <field name="TEXT">abc</field>
-                  </shadow>
-                  <block type="procedures_callreturn" id="#?V?T^g@Wq2oi)O/1XD[">
-                    <mutation name="Bateria 1"></mutation>
-                  </block>
-                </value>
-                <next>
-                  <block type="text_print" id="Z,jl`C+vTJZacIyIL:E+">
-                    <value name="TEXT">
-                      <shadow type="text" id="P.[hYl-d4{qiLrdWI`OH">
-                        <field name="TEXT">abc</field>
-                      </shadow>
-                      <block type="procedures_callreturn" id="`0L$rbKF*0qpxVaCxrDP">
-                        <mutation name="Bateria 2"></mutation>
-                      </block>
-                    </value>
-                  </block>
-                </next>
-              </block>
-            </next>
-          </block>
-        </statement>
-      </block>
-    </next>
-  </block>
-  <block type="procedures_defnoreturn" id="_ZUGFjWb_T/uPC.%?9IP" collapsed="true" x="138" y="-287">
+  <block type="procedures_defnoreturn" id="_ZUGFjWb_T/uPC.%?9IP" collapsed="true" x="188" y="-287">
     <field name="NAME">Config Ultrassom</field>
     <comment pinned="false" h="80" w="160">Describe this function...</comment>
     <statement name="STACK">
@@ -1218,5 +1171,52 @@
         </value>
       </block>
     </statement>
+  </block>
+  <block type="procedures_callnoreturn" id="#?E$+nu~3@l/YOEfh^|W" x="-187" y="-188">
+    <mutation name="Mover Frente">
+      <arg name="Porcentagem 0 - 100%"></arg>
+    </mutation>
+    <value name="ARG0">
+      <block type="math_number" id="(_t^B9MHD+$cVMvI.%t!">
+        <field name="NUM">100</field>
+      </block>
+    </value>
+    <next>
+      <block type="procedures_callnoreturn" id="~uI,SmGi`.uwm02G}HH8">
+        <mutation name="Config Encoder"></mutation>
+        <next>
+          <block type="controls_whileUntil" id="NrWJB/T$1mJFtrO+=LnG">
+            <field name="MODE">WHILE</field>
+            <value name="BOOL">
+              <block type="logic_boolean" id="o(AmUKCK,7@yJP|l.Wli">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="delay" id="R#O3Xdo8W9[6%_j1[Dma">
+                <field name="SCALE">sleep</field>
+                <value name="TIME">
+                  <shadow type="math_number" id="]~W@!{SA{ESxQ)AZ9bOe">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="text_print" id=",`Vg1h0YT#W/0bfol1Fe">
+                    <value name="TEXT">
+                      <shadow type="text" id="db]lfTS]Ga-^r={7ZNK(">
+                        <field name="TEXT">abc</field>
+                      </shadow>
+                      <block type="procedures_callreturn" id="fbAmNRh11Q[O1+gEkv-O">
+                        <mutation name="RPM"></mutation>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
   </block>
 </xml>
