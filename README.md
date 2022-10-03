@@ -72,7 +72,6 @@ O projeto segue as informações disponíveis em https://github.com/xtarke/autom
 
 - https://microblocks.fun/
 - http://bipes.net.br/ide/
-- https://ide.codeskool.cc/
 
 ## Temporário
 
