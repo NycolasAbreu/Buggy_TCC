@@ -1,24 +1,24 @@
 <xml xmlns="https://bipes.net.br">
   <workspace>
     <field name="DEVICE">ESP32</field>
-    <field name="TIMESTAMP">1664808652934</field>
+    <field name="TIMESTAMP">1664893732570</field>
     <freeboard><![CDATA[{"version":1,"allow_edit":true,"plugins":[],"panes":[],"datasources":[],"columns":3}]]></freeboard>
     <databoard><![CDATA[{"currentWorkspace":"l8lp0vtxk4or2r948l","workspace:l8lp0vtxk4or2r948l":[]}]]></databoard> 
   </workspace>
   <variables>
     <variable id="d.8aRL!d#HJTrw`y4ebJ">perc</variable>
     <variable id="#JZYtnHX:@3cYS#4nt;]">Porcentagem 0 - 100%</variable>
-    <variable id="{`+wqxf,Udqw)tV6k94O">_tempo</variable>
     <variable id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</variable>
+    <variable id="{`+wqxf,Udqw)tV6k94O">_tempo</variable>
     <variable id="3FcM%nnO{_+s#H-EIE)$">_bat1</variable>
     <variable id="$s#WTnlpRG5Y{Ey^m)*w">_rpm</variable>
     <variable id="K5n#6N1[b}De]AMDc6_k">Duty</variable>
-    <variable id="sv5k.E]6iJ-wOS`2A4fi">_contagem direita</variable>
-    <variable id="35y985,6J/Vj`Wl79{:B">_contagem encoder</variable>
     <variable id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</variable>
+    <variable id="35y985,6J/Vj`Wl79{:B">_contagem encoder</variable>
     <variable id="fl9m#E6%:!GcE#_SX:fB">_bat2</variable>
     <variable id="8bD,fd-od2:QSI?!dO3q">_freq</variable>
     <variable id="}8UPObV_;(vEIHq+0tJt">_contagem esquerda</variable>
+    <variable id="sv5k.E]6iJ-wOS`2A4fi">_contagem direita</variable>
   </variables>
   <block type="procedures_defreturn" id="ve8y0~0V@3W/n)cnN4a3" collapsed="true" x="-313" y="-412">
     <mutation>
@@ -137,209 +137,57 @@
       </block>
     </value>
   </block>
-  <block type="procedures_defnoreturn" id="UyiIEBKQ;Oz2]9UJYnU!" collapsed="true" x="-63" y="-413">
-    <field name="NAME">_Recebe Sensor Linha</field>
+  <block type="procedures_defnoreturn" id="_c=S^NQhnl=#=g-YeW!O" collapsed="true" x="-63" y="-412">
+    <field name="NAME">Config Sensor Linha</field>
     <comment pinned="false" h="80" w="160">Describe this function...</comment>
     <statement name="STACK">
-      <block type="controls_if" id="XJq=V4mvUl4R7nP%ZX%|">
-        <mutation else="1"></mutation>
-        <value name="IF0">
-          <block type="logic_compare" id="mE`O^)9T+sSM5:pWn~Wy">
-            <field name="OP">NEQ</field>
-            <value name="A">
-              <block type="gpio_get" id="d]bH=[jCJLDpEn];=p#P">
-                <value name="pin">
-                  <shadow type="pinout" id="K3@(=0xkRsu,!%+PApYi">
-                    <field name="DEVICE">ESP32</field>
-                    <field name="PIN">26</field>
-                  </shadow>
-                </value>
-                <value name="pullup">
-                  <shadow type="logic_boolean" id="lWQqe,[I^T*FwDuEW#h~">
-                    <field name="BOOL">FALSE</field>
-                  </shadow>
-                </value>
-              </block>
-            </value>
-            <value name="B">
-              <block type="variables_get" id="li-pG]_tXI{e?#{p(6KQ">
-                <field name="VAR" id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</field>
-              </block>
-            </value>
+      <block type="variables_set" id="DRJ,;;!!RJK3)-O%G8cl">
+        <field name="VAR" id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</field>
+        <value name="VALUE">
+          <block type="math_number" id="HX?O-AVlq-n(M:?D[hFI">
+            <field name="NUM">0</field>
           </block>
         </value>
-        <statement name="DO0">
-          <block type="variables_set" id=":An!hdeW~VTNMgCaq0o7">
-            <field name="VAR" id="sv5k.E]6iJ-wOS`2A4fi">_contagem direita</field>
+        <next>
+          <block type="variables_set" id="Fo?J8a@vG2HNRDgr@v?E">
+            <field name="VAR" id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</field>
             <value name="VALUE">
-              <block type="math_arithmetic" id="*m*jD)s{S%cV47pQ[Q~=">
-                <field name="OP">MINUS</field>
-                <value name="A">
-                  <shadow xmlns="https://bipes.net.br" type="math_number" id="yqr_NAihY+Z0sS7M#=ZR">
-                    <field name="NUM">1</field>
-                  </shadow>
-                  <block type="variables_get" id="0YG)4y|Vc6OLx@CfL3==">
-                    <field name="VAR" id="sv5k.E]6iJ-wOS`2A4fi">_contagem direita</field>
-                  </block>
-                </value>
-                <value name="B">
-                  <shadow type="math_number" id=")Rj7r-7d:7w4c!krVKc4">
-                    <field name="NUM">1</field>
-                  </shadow>
-                </value>
+              <block type="math_number" id=",S;Kr7z:dyFUFLpm?Uc;">
+                <field name="NUM">0</field>
               </block>
             </value>
             <next>
-              <block type="controls_if" id="iF%YsWOl?{RT@Ob}yz^7">
-                <value name="IF0">
-                  <block type="logic_compare" id="%vDAfdx9G0EvXZ~LO1xw">
-                    <field name="OP">LTE</field>
-                    <value name="A">
-                      <block type="variables_get" id="sRk~ek^Yevot4Bg-u2qy">
-                        <field name="VAR" id="sv5k.E]6iJ-wOS`2A4fi">_contagem direita</field>
-                      </block>
-                    </value>
-                    <value name="B">
-                      <block type="math_number" id="`X]NG|h^chMZ]v;zCBO.">
-                        <field name="NUM">0</field>
-                      </block>
-                    </value>
-                  </block>
-                </value>
-                <statement name="DO0">
-                  <block type="variables_set" id="1QUIBR57J3oIg|sKht[X">
-                    <field name="VAR" id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</field>
-                    <value name="VALUE">
-                      <block type="gpio_get" id="?7X;P6pdy.s8;U5vDE3}">
-                        <value name="pin">
-                          <shadow type="pinout" id="vbZx^9GsQzr|P/`fag@;">
-                            <field name="DEVICE">ESP32</field>
-                            <field name="PIN">26</field>
-                          </shadow>
-                        </value>
-                        <value name="pullup">
-                          <shadow type="logic_boolean" id="kT6,A;lF.McDh@M,hyFd">
-                            <field name="BOOL">FALSE</field>
-                          </shadow>
-                        </value>
-                      </block>
-                    </value>
-                  </block>
-                </statement>
-              </block>
-            </next>
-          </block>
-        </statement>
-        <statement name="ELSE">
-          <block type="variables_set" id="bF%)wttv?5+P{9:IfE$!">
-            <field name="VAR" id="sv5k.E]6iJ-wOS`2A4fi">_contagem direita</field>
-            <value name="VALUE">
-              <block type="math_number" id="M`=|]l5A;zf!l7g:uCz2">
-                <field name="NUM">10</field>
-              </block>
-            </value>
-          </block>
-        </statement>
-        <next>
-          <block type="controls_if" id="HDexa@=~#@xt-rY{np,f">
-            <mutation else="1"></mutation>
-            <value name="IF0">
-              <block type="logic_compare" id="xR`FWe2?%O{zR(S2ubaK">
-                <field name="OP">NEQ</field>
-                <value name="A">
-                  <block type="gpio_get" id="t85Z^qT0Hvllf-re[.]*">
-                    <value name="pin">
-                      <shadow type="pinout" id="Aj[XVMyq/k;`@3QAWG!;">
-                        <field name="DEVICE">ESP32</field>
-                        <field name="PIN">25</field>
-                      </shadow>
-                    </value>
-                    <value name="pullup">
-                      <shadow type="logic_boolean" id="8)#20KGzfYqv`iE]$$:w">
-                        <field name="BOOL">FALSE</field>
-                      </shadow>
-                    </value>
-                  </block>
-                </value>
-                <value name="B">
-                  <block type="variables_get" id="hd#+3O)cDg:f`IXXmS!Y">
-                    <field name="VAR" id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</field>
-                  </block>
-                </value>
-              </block>
-            </value>
-            <statement name="DO0">
-              <block type="variables_set" id="%Y~YKfxH:T1|S4S`f`9}">
+              <block type="variables_set" id="SmqtlbwL`R1cg%!M;[q#">
                 <field name="VAR" id="}8UPObV_;(vEIHq+0tJt">_contagem esquerda</field>
                 <value name="VALUE">
-                  <block type="math_arithmetic" id="vc={2|hR)4,n$-40vA70">
-                    <field name="OP">MINUS</field>
-                    <value name="A">
-                      <shadow xmlns="https://bipes.net.br" type="math_number">
-                        <field name="NUM">1</field>
-                      </shadow>
-                      <block type="variables_get" id="5c.}SlJuTl$VFyVk5R=8">
-                        <field name="VAR" id="}8UPObV_;(vEIHq+0tJt">_contagem esquerda</field>
-                      </block>
-                    </value>
-                    <value name="B">
-                      <shadow type="math_number" id="65mNYd:k@s7wc`C(jGqf">
-                        <field name="NUM">1</field>
-                      </shadow>
-                    </value>
+                  <block type="math_number" id="!|berS1n}Ry(ib+R4c#B">
+                    <field name="NUM">5</field>
                   </block>
                 </value>
                 <next>
-                  <block type="controls_if" id="28bB0mtQAO=K!)k-qtsQ">
-                    <value name="IF0">
-                      <block type="logic_compare" id="@9EZ}zIlID3QQ4i*S_`X">
-                        <field name="OP">LTE</field>
-                        <value name="A">
-                          <block type="variables_get" id="xW~G}`k-*Cou3k@cvsFl">
-                            <field name="VAR" id="}8UPObV_;(vEIHq+0tJt">_contagem esquerda</field>
-                          </block>
-                        </value>
-                        <value name="B">
-                          <block type="math_number" id="-+IjcYi*H0t(_OgdnQ?M">
-                            <field name="NUM">0</field>
-                          </block>
-                        </value>
+                  <block type="variables_set" id=")}bA;^kzJTofi[@z$kcG">
+                    <field name="VAR" id="sv5k.E]6iJ-wOS`2A4fi">_contagem direita</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="b5J.(G)bOxneq6AuwDtx">
+                        <field name="NUM">5</field>
                       </block>
                     </value>
-                    <statement name="DO0">
-                      <block type="variables_set" id="#;DMuxmWh3WoTcUcb:l}">
-                        <field name="VAR" id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</field>
-                        <value name="VALUE">
-                          <block type="gpio_get" id="V~z(]$U_.SXmA|1QXhk4">
-                            <value name="pin">
-                              <shadow type="pinout" id="qC:OQPp0bL_sEf:7fl(}">
-                                <field name="DEVICE">ESP32</field>
-                                <field name="PIN">25</field>
-                              </shadow>
-                            </value>
-                            <value name="pullup">
-                              <shadow type="logic_boolean" id="#-smtbRB_7EpYI3?g,xi">
-                                <field name="BOOL">FALSE</field>
-                              </shadow>
-                            </value>
+                    <next>
+                      <block type="timer" id="m7uB[77GY?s,+mCUikZr">
+                        <field name="timerNumber">2</field>
+                        <field name="MODE">PERIODIC</field>
+                        <field name="interval">5</field>
+                        <statement name="statements">
+                          <block type="procedures_callnoreturn" id="~~}s7#lhKcmN~Q2W+sKF">
+                            <mutation name="_Recebe Sensor Linha"></mutation>
                           </block>
-                        </value>
+                        </statement>
                       </block>
-                    </statement>
+                    </next>
                   </block>
                 </next>
               </block>
-            </statement>
-            <statement name="ELSE">
-              <block type="variables_set" id="Xo{)hVxoPN9nsBQ?p0$[">
-                <field name="VAR" id="}8UPObV_;(vEIHq+0tJt">_contagem esquerda</field>
-                <value name="VALUE">
-                  <block type="math_number" id="KVywLA_f||.NXI#h?iTK">
-                    <field name="NUM">10</field>
-                  </block>
-                </value>
-              </block>
-            </statement>
+            </next>
           </block>
         </next>
       </block>
@@ -419,7 +267,463 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defreturn" id="CMVKtE)D5|V;/SNxDS5L" collapsed="true" x="187" y="-413">
+  <block type="procedures_defnoreturn" id="mn[Q#zM!wxq[jcAPpj%@" collapsed="true" x="188" y="-412">
+    <field name="NAME">Config Encoder</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id=".C_(X?/{c5#rr`3f%Dsi">
+        <field name="VAR" id="{`+wqxf,Udqw)tV6k94O">_tempo</field>
+        <value name="VALUE">
+          <block type="utime.vars" id="r-jloYxp!*|,SWC,cso[">
+            <field name="VARS">time</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="r7j-5[Nm+`TBb[Lhlj$F">
+            <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
+            <value name="VALUE">
+              <block type="math_number" id="LQ/RB_!n3,#Py!]P7Xb!">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="Y2GB{.~4S0|-Y$|LKQgK">
+                <field name="VAR" id="$s#WTnlpRG5Y{Ey^m)*w">_rpm</field>
+                <value name="VALUE">
+                  <block type="math_number" id="w3b$jWi|?]8Ukut[zmz?">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="WuJAJIxZw_up49?KXRmV">
+                    <field name="VAR" id="8bD,fd-od2:QSI?!dO3q">_freq</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="m{Cz|3ZRZk4.zbub}/c-">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="gpio_interrupt" id="{0-hv%E#Sr+p4{fl|8{)">
+                        <field name="trigger">BOTH</field>
+                        <value name="pin">
+                          <shadow xmlns="https://bipes.net.br" type="pinout" id="o-`({M{[c_ZN)+s5#G;+">
+                            <field name="DEVICE">ESP32</field>
+                            <field name="PIN">4</field>
+                          </shadow>
+                          <block type="pinout" id="R2?}2@rcCUAN`?SAmZ0I">
+                            <field name="DEVICE">ESP32</field>
+                            <field name="PIN">4</field>
+                          </block>
+                        </value>
+                        <statement name="code">
+                          <block type="variables_set" id=".Tv|=P.$^]h(fZRE-dZj">
+                            <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
+                            <value name="VALUE">
+                              <block type="math_arithmetic" id="9oV5JWm2btYJQl64F[.{">
+                                <field name="OP">ADD</field>
+                                <value name="A">
+                                  <shadow xmlns="https://bipes.net.br" type="math_number" id="H`nvq||Tam|^WQq(B*v7">
+                                    <field name="NUM">1</field>
+                                  </shadow>
+                                  <block type="variables_get" id="/vg|ynL%Ib#FoI=nF~/=">
+                                    <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <shadow type="math_number" id="LJ~Kld8l(QtBBrIF7N:L">
+                                    <field name="NUM">1</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="UyiIEBKQ;Oz2]9UJYnU!" collapsed="true" x="-63" y="-388">
+    <field name="NAME">_Recebe Sensor Linha</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="text_print" id="T++4=_dL`g,COM4AR.7Y">
+        <value name="TEXT">
+          <shadow xmlns="https://bipes.net.br" type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+          <block type="text_join" id="l_E4_L~o93919.xje^d)">
+            <mutation items="3"></mutation>
+            <value name="ADD0">
+              <block type="variables_get" id="/K(vg])TpY]AJr5cuEin">
+                <field name="VAR" id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</field>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="text" id="fS$.m$!=*nOTpvN(oTq6">
+                <field name="TEXT">-</field>
+              </block>
+            </value>
+            <value name="ADD2">
+              <block type="variables_get" id="jFo/aH#okaR^+?e:~eQ~">
+                <field name="VAR" id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="XJq=V4mvUl4R7nP%ZX%|">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="mE`O^)9T+sSM5:pWn~Wy">
+                <field name="OP">NEQ</field>
+                <value name="A">
+                  <block type="gpio_get" id="d]bH=[jCJLDpEn];=p#P">
+                    <value name="pin">
+                      <shadow type="pinout" id="K3@(=0xkRsu,!%+PApYi">
+                        <field name="DEVICE">ESP32</field>
+                        <field name="PIN">26</field>
+                      </shadow>
+                    </value>
+                    <value name="pullup">
+                      <shadow type="logic_boolean" id="lWQqe,[I^T*FwDuEW#h~">
+                        <field name="BOOL">FALSE</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="li-pG]_tXI{e?#{p(6KQ">
+                    <field name="VAR" id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set" id=":An!hdeW~VTNMgCaq0o7">
+                <field name="VAR" id="sv5k.E]6iJ-wOS`2A4fi">_contagem direita</field>
+                <value name="VALUE">
+                  <block type="math_arithmetic" id="*m*jD)s{S%cV47pQ[Q~=">
+                    <field name="OP">MINUS</field>
+                    <value name="A">
+                      <shadow xmlns="https://bipes.net.br" type="math_number" id="yqr_NAihY+Z0sS7M#=ZR">
+                        <field name="NUM">1</field>
+                      </shadow>
+                      <block type="variables_get" id="0YG)4y|Vc6OLx@CfL3==">
+                        <field name="VAR" id="sv5k.E]6iJ-wOS`2A4fi">_contagem direita</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <shadow type="math_number" id=")Rj7r-7d:7w4c!krVKc4">
+                        <field name="NUM">1</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="iF%YsWOl?{RT@Ob}yz^7">
+                    <value name="IF0">
+                      <block type="logic_compare" id="%vDAfdx9G0EvXZ~LO1xw">
+                        <field name="OP">LTE</field>
+                        <value name="A">
+                          <block type="variables_get" id="sRk~ek^Yevot4Bg-u2qy">
+                            <field name="VAR" id="sv5k.E]6iJ-wOS`2A4fi">_contagem direita</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="`X]NG|h^chMZ]v;zCBO.">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="1QUIBR57J3oIg|sKht[X">
+                        <field name="VAR" id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</field>
+                        <value name="VALUE">
+                          <block type="gpio_get" id="?7X;P6pdy.s8;U5vDE3}">
+                            <value name="pin">
+                              <shadow type="pinout" id="vbZx^9GsQzr|P/`fag@;">
+                                <field name="DEVICE">ESP32</field>
+                                <field name="PIN">26</field>
+                              </shadow>
+                            </value>
+                            <value name="pullup">
+                              <shadow type="logic_boolean" id="kT6,A;lF.McDh@M,hyFd">
+                                <field name="BOOL">FALSE</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="variables_set" id="bF%)wttv?5+P{9:IfE$!">
+                <field name="VAR" id="sv5k.E]6iJ-wOS`2A4fi">_contagem direita</field>
+                <value name="VALUE">
+                  <block type="math_number" id="M`=|]l5A;zf!l7g:uCz2">
+                    <field name="NUM">5</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_if" id="HDexa@=~#@xt-rY{np,f">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="xR`FWe2?%O{zR(S2ubaK">
+                    <field name="OP">NEQ</field>
+                    <value name="A">
+                      <block type="gpio_get" id="t85Z^qT0Hvllf-re[.]*">
+                        <value name="pin">
+                          <shadow type="pinout" id="Aj[XVMyq/k;`@3QAWG!;">
+                            <field name="DEVICE">ESP32</field>
+                            <field name="PIN">25</field>
+                          </shadow>
+                        </value>
+                        <value name="pullup">
+                          <shadow type="logic_boolean" id="8)#20KGzfYqv`iE]$$:w">
+                            <field name="BOOL">FALSE</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="hd#+3O)cDg:f`IXXmS!Y">
+                        <field name="VAR" id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="%Y~YKfxH:T1|S4S`f`9}">
+                    <field name="VAR" id="}8UPObV_;(vEIHq+0tJt">_contagem esquerda</field>
+                    <value name="VALUE">
+                      <block type="math_arithmetic" id="vc={2|hR)4,n$-40vA70">
+                        <field name="OP">MINUS</field>
+                        <value name="A">
+                          <shadow xmlns="https://bipes.net.br" type="math_number">
+                            <field name="NUM">1</field>
+                          </shadow>
+                          <block type="variables_get" id="5c.}SlJuTl$VFyVk5R=8">
+                            <field name="VAR" id="}8UPObV_;(vEIHq+0tJt">_contagem esquerda</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <shadow type="math_number" id="65mNYd:k@s7wc`C(jGqf">
+                            <field name="NUM">1</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="28bB0mtQAO=K!)k-qtsQ">
+                        <value name="IF0">
+                          <block type="logic_compare" id="@9EZ}zIlID3QQ4i*S_`X">
+                            <field name="OP">LTE</field>
+                            <value name="A">
+                              <block type="variables_get" id="xW~G}`k-*Cou3k@cvsFl">
+                                <field name="VAR" id="}8UPObV_;(vEIHq+0tJt">_contagem esquerda</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="-+IjcYi*H0t(_OgdnQ?M">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="#;DMuxmWh3WoTcUcb:l}">
+                            <field name="VAR" id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</field>
+                            <value name="VALUE">
+                              <block type="gpio_get" id="V~z(]$U_.SXmA|1QXhk4">
+                                <value name="pin">
+                                  <shadow type="pinout" id="qC:OQPp0bL_sEf:7fl(}">
+                                    <field name="DEVICE">ESP32</field>
+                                    <field name="PIN">25</field>
+                                  </shadow>
+                                </value>
+                                <value name="pullup">
+                                  <shadow type="logic_boolean" id="#-smtbRB_7EpYI3?g,xi">
+                                    <field name="BOOL">FALSE</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="variables_set" id="Xo{)hVxoPN9nsBQ?p0$[">
+                    <field name="VAR" id="}8UPObV_;(vEIHq+0tJt">_contagem esquerda</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="KVywLA_f||.NXI#h?iTK">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="TjTSn]^#lzuJW-TJ`fsp" collapsed="true" x="438" y="-412">
+    <field name="NAME">Config Baterias</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="uryBH7ZnRIme`)!;I4D-">
+        <field name="VAR" id="3FcM%nnO{_+s#H-EIE)$">_bat1</field>
+        <value name="VALUE">
+          <block type="math_number" id="5%ik``_dc}?YM2F)*w+q">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="ihBHQjt2_HbWWy.Oa8HJ">
+            <field name="VAR" id="fl9m#E6%:!GcE#_SX:fB">_bat2</field>
+            <value name="VALUE">
+              <block type="math_number" id="8Y8+:;S[xD;O6Q|}]n4@">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="timer" id="L*gPW[aN:BJrcVOf7_As">
+                <field name="timerNumber">1</field>
+                <field name="MODE">PERIODIC</field>
+                <field name="interval">5000</field>
+                <statement name="statements">
+                  <block type="variables_set" id="G=g_#P+iN|+WCj)tALi/">
+                    <field name="VAR" id="3FcM%nnO{_+s#H-EIE)$">_bat1</field>
+                    <value name="VALUE">
+                      <block type="esp32_adc" id="FDU=G-7G^aev4t|vXc@M">
+                        <field name="Attenuation">3</field>
+                        <field name="Width: ">3</field>
+                        <value name="pin">
+                          <shadow type="pinout" id=":W])@WauBS[.O.aKM~Jw">
+                            <field name="DEVICE">ESP32</field>
+                            <field name="PIN">32</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="Pny;b17=,+$!P%`3GT`Y">
+                        <field name="VAR" id="fl9m#E6%:!GcE#_SX:fB">_bat2</field>
+                        <value name="VALUE">
+                          <block type="esp32_adc" id="gM2g3.X.klsZIi@Zv1{S">
+                            <field name="Attenuation">3</field>
+                            <field name="Width: ">3</field>
+                            <value name="pin">
+                              <shadow type="pinout" id="/0q$+)Dp{fJG`b[tnWSn">
+                                <field name="DEVICE">ESP32</field>
+                                <field name="PIN">33</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="=,/,jPc*MW+?X4KAE%p%" collapsed="true" x="-313" y="-363">
+    <mutation>
+      <arg name="Porcentagem 0 - 100%" varid="#JZYtnHX:@3cYS#4nt;]"></arg>
+    </mutation>
+    <field name="NAME">Mover Frente</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="procedures_callnoreturn" id="~*8j@-rNNWjGqI6CNdGi">
+        <mutation name="Parar Motores"></mutation>
+        <next>
+          <block type="pwm" id="[..$AFk:M*}kF}mKh|c#">
+            <field name="ID">21</field>
+            <value name="pin">
+              <shadow type="pinout" id="Ec?f5s}^jy=mPgF`fI67">
+                <field name="DEVICE">ESP32</field>
+                <field name="PIN">21</field>
+              </shadow>
+            </value>
+            <value name="frequency">
+              <shadow type="math_number" id="XFgEvJyV!O3UgB_xs~)!">
+                <field name="NUM">1000</field>
+              </shadow>
+            </value>
+            <value name="duty">
+              <shadow xmlns="https://bipes.net.br" type="math_number" id="sX3B{o.-}Kj/w8t:P$YR">
+                <field name="NUM">50</field>
+              </shadow>
+              <block type="procedures_callreturn" id=".M#7)Jp~bzvLm=CRQTF@">
+                <mutation name="_Duty Porcentagem">
+                  <arg name="perc"></arg>
+                </mutation>
+                <value name="ARG0">
+                  <block type="variables_get" id="Ik3[Go7A7@$L^G.4%l`-">
+                    <field name="VAR" id="#JZYtnHX:@3cYS#4nt;]">Porcentagem 0 - 100%</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="pwm" id="Ax}V[0e7$,/mTK911082">
+                <field name="ID">18</field>
+                <value name="pin">
+                  <shadow type="pinout" id="M8u4ta.XW~j|ued0$+BQ">
+                    <field name="DEVICE">ESP32</field>
+                    <field name="PIN">18</field>
+                  </shadow>
+                </value>
+                <value name="frequency">
+                  <shadow type="math_number" id="+]4r1)!q(fZV@!;vZ[:[">
+                    <field name="NUM">1000</field>
+                  </shadow>
+                </value>
+                <value name="duty">
+                  <shadow xmlns="https://bipes.net.br" type="math_number" id="=S`FSrL4M(A)9EM;ikW6">
+                    <field name="NUM">50</field>
+                  </shadow>
+                  <block type="procedures_callreturn" id="@#%gsVcmR[r@Qu$=rqdi">
+                    <mutation name="_Duty Porcentagem">
+                      <arg name="perc"></arg>
+                    </mutation>
+                    <value name="ARG0">
+                      <block type="variables_get" id="qk=NK;T{BmOky3:zyNrG">
+                        <field name="VAR" id="#JZYtnHX:@3cYS#4nt;]">Porcentagem 0 - 100%</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="CMVKtE)D5|V;/SNxDS5L" collapsed="true" x="188" y="-388">
     <field name="NAME">RPM</field>
     <comment pinned="false" h="80" w="160">Describe this function...</comment>
     <statement name="STACK">
@@ -561,280 +865,31 @@
       </block>
     </value>
   </block>
-  <block type="procedures_defnoreturn" id="_c=S^NQhnl=#=g-YeW!O" collapsed="true" x="-63" y="-388">
-    <field name="NAME">Config Sensor Linha</field>
+  <block type="procedures_defnoreturn" id="_ZUGFjWb_T/uPC.%?9IP" collapsed="true" x="688" y="-413">
+    <field name="NAME">Config Ultrassom</field>
     <comment pinned="false" h="80" w="160">Describe this function...</comment>
     <statement name="STACK">
-      <block type="variables_set" id="DRJ,;;!!RJK3)-O%G8cl">
-        <field name="VAR" id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</field>
-        <value name="VALUE">
-          <block type="math_number" id="HX?O-AVlq-n(M:?D[hFI">
-            <field name="NUM">0</field>
-          </block>
+      <block type="hcsr_init" id="5WExF4nx/NI%ZM)aeaI|">
+        <field name="DHT_PIN_MSG">timeout (us)</field>
+        <field name="DHT_PIN_MSG">trigger pin</field>
+        <field name="DHT_PIN_MSG">timeout (us)</field>
+        <value name="echo">
+          <shadow type="pinout" id="6T25Jc)NN+w5!*hHpk.L">
+            <field name="DEVICE">ESP32</field>
+            <field name="PIN">14</field>
+          </shadow>
         </value>
-        <next>
-          <block type="variables_set" id="Fo?J8a@vG2HNRDgr@v?E">
-            <field name="VAR" id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</field>
-            <value name="VALUE">
-              <block type="math_number" id=",S;Kr7z:dyFUFLpm?Uc;">
-                <field name="NUM">0</field>
-              </block>
-            </value>
-            <next>
-              <block type="variables_set" id="SmqtlbwL`R1cg%!M;[q#">
-                <field name="VAR" id="}8UPObV_;(vEIHq+0tJt">_contagem esquerda</field>
-                <value name="VALUE">
-                  <block type="math_number" id="!|berS1n}Ry(ib+R4c#B">
-                    <field name="NUM">10</field>
-                  </block>
-                </value>
-                <next>
-                  <block type="variables_set" id=")}bA;^kzJTofi[@z$kcG">
-                    <field name="VAR" id="sv5k.E]6iJ-wOS`2A4fi">_contagem direita</field>
-                    <value name="VALUE">
-                      <block type="math_number" id="b5J.(G)bOxneq6AuwDtx">
-                        <field name="NUM">10</field>
-                      </block>
-                    </value>
-                    <next>
-                      <block type="timer" id="m7uB[77GY?s,+mCUikZr">
-                        <field name="timerNumber">2</field>
-                        <field name="MODE">PERIODIC</field>
-                        <field name="interval">5</field>
-                        <statement name="statements">
-                          <block type="procedures_callnoreturn" id="~~}s7#lhKcmN~Q2W+sKF">
-                            <mutation name="_Recebe Sensor Linha"></mutation>
-                          </block>
-                        </statement>
-                      </block>
-                    </next>
-                  </block>
-                </next>
-              </block>
-            </next>
-          </block>
-        </next>
-      </block>
-    </statement>
-  </block>
-  <block type="procedures_defnoreturn" id="TjTSn]^#lzuJW-TJ`fsp" collapsed="true" x="438" y="-412">
-    <field name="NAME">Config Baterias</field>
-    <comment pinned="false" h="80" w="160">Describe this function...</comment>
-    <statement name="STACK">
-      <block type="variables_set" id="uryBH7ZnRIme`)!;I4D-">
-        <field name="VAR" id="3FcM%nnO{_+s#H-EIE)$">_bat1</field>
-        <value name="VALUE">
-          <block type="math_number" id="5%ik``_dc}?YM2F)*w+q">
-            <field name="NUM">0</field>
-          </block>
+        <value name="trigger">
+          <shadow type="pinout" id="SP05_3ozWm42`0t^vdP.">
+            <field name="DEVICE">ESP32</field>
+            <field name="PIN">27</field>
+          </shadow>
         </value>
-        <next>
-          <block type="variables_set" id="ihBHQjt2_HbWWy.Oa8HJ">
-            <field name="VAR" id="fl9m#E6%:!GcE#_SX:fB">_bat2</field>
-            <value name="VALUE">
-              <block type="math_number" id="8Y8+:;S[xD;O6Q|}]n4@">
-                <field name="NUM">0</field>
-              </block>
-            </value>
-            <next>
-              <block type="timer" id="L*gPW[aN:BJrcVOf7_As">
-                <field name="timerNumber">2</field>
-                <field name="MODE">PERIODIC</field>
-                <field name="interval">5000</field>
-                <statement name="statements">
-                  <block type="variables_set" id="G=g_#P+iN|+WCj)tALi/">
-                    <field name="VAR" id="3FcM%nnO{_+s#H-EIE)$">_bat1</field>
-                    <value name="VALUE">
-                      <block type="esp32_adc" id="FDU=G-7G^aev4t|vXc@M">
-                        <field name="Attenuation">3</field>
-                        <field name="Width: ">3</field>
-                        <value name="pin">
-                          <shadow type="pinout" id=":W])@WauBS[.O.aKM~Jw">
-                            <field name="DEVICE">ESP32</field>
-                            <field name="PIN">32</field>
-                          </shadow>
-                        </value>
-                      </block>
-                    </value>
-                    <next>
-                      <block type="variables_set" id="Pny;b17=,+$!P%`3GT`Y">
-                        <field name="VAR" id="fl9m#E6%:!GcE#_SX:fB">_bat2</field>
-                        <value name="VALUE">
-                          <block type="esp32_adc" id="gM2g3.X.klsZIi@Zv1{S">
-                            <field name="Attenuation">3</field>
-                            <field name="Width: ">3</field>
-                            <value name="pin">
-                              <shadow type="pinout" id="/0q$+)Dp{fJG`b[tnWSn">
-                                <field name="DEVICE">ESP32</field>
-                                <field name="PIN">33</field>
-                              </shadow>
-                            </value>
-                          </block>
-                        </value>
-                      </block>
-                    </next>
-                  </block>
-                </statement>
-              </block>
-            </next>
-          </block>
-        </next>
-      </block>
-    </statement>
-  </block>
-  <block type="procedures_defnoreturn" id="=,/,jPc*MW+?X4KAE%p%" collapsed="true" x="-313" y="-363">
-    <mutation>
-      <arg name="Porcentagem 0 - 100%" varid="#JZYtnHX:@3cYS#4nt;]"></arg>
-    </mutation>
-    <field name="NAME">Mover Frente</field>
-    <comment pinned="false" h="80" w="160">Describe this function...</comment>
-    <statement name="STACK">
-      <block type="procedures_callnoreturn" id="~*8j@-rNNWjGqI6CNdGi">
-        <mutation name="Parar Motores"></mutation>
-        <next>
-          <block type="pwm" id="[..$AFk:M*}kF}mKh|c#">
-            <field name="ID">21</field>
-            <value name="pin">
-              <shadow type="pinout" id="Ec?f5s}^jy=mPgF`fI67">
-                <field name="DEVICE">ESP32</field>
-                <field name="PIN">21</field>
-              </shadow>
-            </value>
-            <value name="frequency">
-              <shadow type="math_number" id="XFgEvJyV!O3UgB_xs~)!">
-                <field name="NUM">1000</field>
-              </shadow>
-            </value>
-            <value name="duty">
-              <shadow xmlns="https://bipes.net.br" type="math_number" id="sX3B{o.-}Kj/w8t:P$YR">
-                <field name="NUM">50</field>
-              </shadow>
-              <block type="procedures_callreturn" id=".M#7)Jp~bzvLm=CRQTF@">
-                <mutation name="_Duty Porcentagem">
-                  <arg name="perc"></arg>
-                </mutation>
-                <value name="ARG0">
-                  <block type="variables_get" id="Ik3[Go7A7@$L^G.4%l`-">
-                    <field name="VAR" id="#JZYtnHX:@3cYS#4nt;]">Porcentagem 0 - 100%</field>
-                  </block>
-                </value>
-              </block>
-            </value>
-            <next>
-              <block type="pwm" id="Ax}V[0e7$,/mTK911082">
-                <field name="ID">18</field>
-                <value name="pin">
-                  <shadow type="pinout" id="M8u4ta.XW~j|ued0$+BQ">
-                    <field name="DEVICE">ESP32</field>
-                    <field name="PIN">18</field>
-                  </shadow>
-                </value>
-                <value name="frequency">
-                  <shadow type="math_number" id="+]4r1)!q(fZV@!;vZ[:[">
-                    <field name="NUM">1000</field>
-                  </shadow>
-                </value>
-                <value name="duty">
-                  <shadow xmlns="https://bipes.net.br" type="math_number" id="=S`FSrL4M(A)9EM;ikW6">
-                    <field name="NUM">50</field>
-                  </shadow>
-                  <block type="procedures_callreturn" id="@#%gsVcmR[r@Qu$=rqdi">
-                    <mutation name="_Duty Porcentagem">
-                      <arg name="perc"></arg>
-                    </mutation>
-                    <value name="ARG0">
-                      <block type="variables_get" id="qk=NK;T{BmOky3:zyNrG">
-                        <field name="VAR" id="#JZYtnHX:@3cYS#4nt;]">Porcentagem 0 - 100%</field>
-                      </block>
-                    </value>
-                  </block>
-                </value>
-              </block>
-            </next>
-          </block>
-        </next>
-      </block>
-    </statement>
-  </block>
-  <block type="procedures_defnoreturn" id="mn[Q#zM!wxq[jcAPpj%@" collapsed="true" x="188" y="-388">
-    <field name="NAME">Config Encoder</field>
-    <comment pinned="false" h="80" w="160">Describe this function...</comment>
-    <statement name="STACK">
-      <block type="variables_set" id=".C_(X?/{c5#rr`3f%Dsi">
-        <field name="VAR" id="{`+wqxf,Udqw)tV6k94O">_tempo</field>
-        <value name="VALUE">
-          <block type="utime.vars" id="r-jloYxp!*|,SWC,cso[">
-            <field name="VARS">time</field>
-          </block>
+        <value name="timeout">
+          <shadow type="math_number" id="58u]R,N{!412wlZ2x:~9">
+            <field name="NUM">7000</field>
+          </shadow>
         </value>
-        <next>
-          <block type="variables_set" id="r7j-5[Nm+`TBb[Lhlj$F">
-            <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
-            <value name="VALUE">
-              <block type="math_number" id="LQ/RB_!n3,#Py!]P7Xb!">
-                <field name="NUM">0</field>
-              </block>
-            </value>
-            <next>
-              <block type="variables_set" id="Y2GB{.~4S0|-Y$|LKQgK">
-                <field name="VAR" id="$s#WTnlpRG5Y{Ey^m)*w">_rpm</field>
-                <value name="VALUE">
-                  <block type="math_number" id="w3b$jWi|?]8Ukut[zmz?">
-                    <field name="NUM">0</field>
-                  </block>
-                </value>
-                <next>
-                  <block type="variables_set" id="WuJAJIxZw_up49?KXRmV">
-                    <field name="VAR" id="8bD,fd-od2:QSI?!dO3q">_freq</field>
-                    <value name="VALUE">
-                      <block type="math_number" id="m{Cz|3ZRZk4.zbub}/c-">
-                        <field name="NUM">0</field>
-                      </block>
-                    </value>
-                    <next>
-                      <block type="gpio_interrupt" id="{0-hv%E#Sr+p4{fl|8{)">
-                        <field name="trigger">BOTH</field>
-                        <value name="pin">
-                          <shadow xmlns="https://bipes.net.br" type="pinout" id="o-`({M{[c_ZN)+s5#G;+">
-                            <field name="DEVICE">ESP32</field>
-                            <field name="PIN">4</field>
-                          </shadow>
-                          <block type="pinout" id="R2?}2@rcCUAN`?SAmZ0I">
-                            <field name="DEVICE">ESP32</field>
-                            <field name="PIN">4</field>
-                          </block>
-                        </value>
-                        <statement name="code">
-                          <block type="variables_set" id=".Tv|=P.$^]h(fZRE-dZj">
-                            <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
-                            <value name="VALUE">
-                              <block type="math_arithmetic" id="9oV5JWm2btYJQl64F[.{">
-                                <field name="OP">ADD</field>
-                                <value name="A">
-                                  <shadow xmlns="https://bipes.net.br" type="math_number" id="H`nvq||Tam|^WQq(B*v7">
-                                    <field name="NUM">1</field>
-                                  </shadow>
-                                  <block type="variables_get" id="/vg|ynL%Ib#FoI=nF~/=">
-                                    <field name="VAR" id="35y985,6J/Vj`Wl79{:B">_contagem encoder</field>
-                                  </block>
-                                </value>
-                                <value name="B">
-                                  <shadow type="math_number" id="LJ~Kld8l(QtBBrIF7N:L">
-                                    <field name="NUM">1</field>
-                                  </shadow>
-                                </value>
-                              </block>
-                            </value>
-                          </block>
-                        </statement>
-                      </block>
-                    </next>
-                  </block>
-                </next>
-              </block>
-            </next>
-          </block>
-        </next>
       </block>
     </statement>
   </block>
@@ -1144,79 +1199,209 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_defnoreturn" id="_ZUGFjWb_T/uPC.%?9IP" collapsed="true" x="188" y="-287">
-    <field name="NAME">Config Ultrassom</field>
+  <block type="procedures_defnoreturn" id="FRVNo,3Us0#aoNr{Y}hO" collapsed="true" x="-312" y="-187">
+    <field name="NAME">Exemplo Seguir linha</field>
     <comment pinned="false" h="80" w="160">Describe this function...</comment>
     <statement name="STACK">
-      <block type="hcsr_init" id="5WExF4nx/NI%ZM)aeaI|">
-        <field name="DHT_PIN_MSG">timeout (us)</field>
-        <field name="DHT_PIN_MSG">trigger pin</field>
-        <field name="DHT_PIN_MSG">timeout (us)</field>
-        <value name="echo">
-          <shadow type="pinout" id="6T25Jc)NN+w5!*hHpk.L">
-            <field name="DEVICE">ESP32</field>
-            <field name="PIN">14</field>
-          </shadow>
-        </value>
-        <value name="trigger">
-          <shadow type="pinout" id="SP05_3ozWm42`0t^vdP.">
-            <field name="DEVICE">ESP32</field>
-            <field name="PIN">27</field>
-          </shadow>
-        </value>
-        <value name="timeout">
-          <shadow type="math_number" id="58u]R,N{!412wlZ2x:~9">
-            <field name="NUM">7000</field>
-          </shadow>
-        </value>
-      </block>
-    </statement>
-  </block>
-  <block type="procedures_callnoreturn" id="#?E$+nu~3@l/YOEfh^|W" x="-187" y="-188">
-    <mutation name="Mover Frente">
-      <arg name="Porcentagem 0 - 100%"></arg>
-    </mutation>
-    <value name="ARG0">
-      <block type="math_number" id="(_t^B9MHD+$cVMvI.%t!">
-        <field name="NUM">100</field>
-      </block>
-    </value>
-    <next>
-      <block type="procedures_callnoreturn" id="~uI,SmGi`.uwm02G}HH8">
-        <mutation name="Config Encoder"></mutation>
+      <block type="procedures_callnoreturn" id="RvFHBNZ#P!?Kc88rdvGd">
+        <mutation name="Config Sensor Linha"></mutation>
         <next>
-          <block type="controls_whileUntil" id="NrWJB/T$1mJFtrO+=LnG">
-            <field name="MODE">WHILE</field>
-            <value name="BOOL">
-              <block type="logic_boolean" id="o(AmUKCK,7@yJP|l.Wli">
-                <field name="BOOL">TRUE</field>
-              </block>
-            </value>
-            <statement name="DO">
-              <block type="delay" id="R#O3Xdo8W9[6%_j1[Dma">
-                <field name="SCALE">sleep</field>
-                <value name="TIME">
-                  <shadow type="math_number" id="]~W@!{SA{ESxQ)AZ9bOe">
-                    <field name="NUM">1</field>
-                  </shadow>
+          <block type="procedures_callnoreturn" id="ZqX#:0h:9f*9n9%pH{?p">
+            <mutation name="Parar Motores"></mutation>
+            <next>
+              <block type="controls_whileUntil" id="lz%J2Ek|~aba7vV.NRV4">
+                <field name="MODE">WHILE</field>
+                <value name="BOOL">
+                  <block type="logic_boolean" id="eY?wE(ZqLIye^,},1Kav">
+                    <field name="BOOL">TRUE</field>
+                  </block>
                 </value>
-                <next>
-                  <block type="text_print" id=",`Vg1h0YT#W/0bfol1Fe">
+                <statement name="DO">
+                  <block type="text_print" id="!5#MEq/M4!Rjjhl9KP6T">
                     <value name="TEXT">
-                      <shadow type="text" id="db]lfTS]Ga-^r={7ZNK(">
+                      <shadow xmlns="https://bipes.net.br" type="text" id="*qvphvDv7p7|or2KCREn">
                         <field name="TEXT">abc</field>
                       </shadow>
-                      <block type="procedures_callreturn" id="fbAmNRh11Q[O1+gEkv-O">
-                        <mutation name="RPM"></mutation>
+                      <block type="text_join" id="Y}n$?n#eZ3+#rWk,yk50">
+                        <mutation items="3"></mutation>
+                        <value name="ADD0">
+                          <block type="variables_get" id="i:$/:W#r*p+Zm9m#4_Q`">
+                            <field name="VAR" id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="text" id="Pu{jOe96(id66#6Haftb">
+                            <field name="TEXT">-</field>
+                          </block>
+                        </value>
+                        <value name="ADD2">
+                          <block type="variables_get" id=")BF]xyLJKCK:|bn2=!1=">
+                            <field name="VAR" id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</field>
+                          </block>
+                        </value>
                       </block>
                     </value>
+                    <next>
+                      <block type="controls_if" id="#(Y^P;ci^:Z,2Yo3VNI)">
+                        <mutation elseif="2" else="1"></mutation>
+                        <value name="IF0">
+                          <block type="logic_operation" id="sU]=gXhv~j`zrK_ND)K%">
+                            <field name="OP">AND</field>
+                            <value name="A">
+                              <block type="logic_compare" id=".a]NnPozM}_.qS@@t7HK">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="ZJP})suxdE/A]TlfCGQ6">
+                                    <field name="VAR" id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="Jj:H!Ikkc`^BADm*w,8w">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_compare" id="5}x0:C%uk_=WL|UsuBc;">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="j3mOB*]p1;!B+KSSs=xx">
+                                    <field name="VAR" id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id=",^%8%Grg~w/Z(#D%iI7v">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="procedures_callnoreturn" id="!Ta[RG$E`I|qqro13(OH">
+                            <mutation name="Mover Frente">
+                              <arg name="Porcentagem 0 - 100%"></arg>
+                            </mutation>
+                            <value name="ARG0">
+                              <block type="math_number" id="@uc~U5x63)|6uHy(dguS">
+                                <field name="NUM">40</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <value name="IF1">
+                          <block type="logic_operation" id="xIj:ax5t`Db_V4Uw7F.B">
+                            <field name="OP">AND</field>
+                            <value name="A">
+                              <block type="logic_compare" id="6LN%mf`7lYV*4$`NUfz0">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="D{nkMzAxPtW,-p8e-VX.">
+                                    <field name="VAR" id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="w2K$l^EKd]*#h}xqHxzw">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_compare" id=":nM=@eST~`*;uoiIXcup">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="X^v`~kuGVn%V2I6oShgx">
+                                    <field name="VAR" id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="4R|/WjH8*ZU+Y+)!C-D%">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO1">
+                          <block type="procedures_callnoreturn" id="shOZ!1(;jSO)gz}6gd4z">
+                            <mutation name="Mover Direita">
+                              <arg name="Porcentagem 0 - 100%"></arg>
+                            </mutation>
+                            <value name="ARG0">
+                              <block type="math_number" id="`){NRf3(u.XSL=.udrQW">
+                                <field name="NUM">70</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <value name="IF2">
+                          <block type="logic_operation" id="UirWFP]6Cor;DkgtTJw;">
+                            <field name="OP">AND</field>
+                            <value name="A">
+                              <block type="logic_compare" id="4lYz%yW-V;Cx;exky9XL">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="rYg|7N1|AtZZD-*$JdX:">
+                                    <field name="VAR" id="bF9!;6oVN??XWFj8[vsh">Sensor Direita</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="x~ALTt?my`GM?;!eVOy/">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_compare" id="atg@r**a4KoY93n)aI3]">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="6K`YeagmbY0{R2e1ZK*E">
+                                    <field name="VAR" id="c)5b)T+?,#1!S9|m-Krh">Sensor Esquerda</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id=".h:|oF(Vp8YQC[13R^x:">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO2">
+                          <block type="procedures_callnoreturn" id="w~DuY~F84}X8N;7_~=-S">
+                            <mutation name="Mover Esquerda">
+                              <arg name="Porcentagem 0 - 100%"></arg>
+                            </mutation>
+                            <value name="ARG0">
+                              <block type="math_number" id="cY,Y/|/#lW=dw}ck]Ta5">
+                                <field name="NUM">70</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <statement name="ELSE">
+                          <block type="procedures_callnoreturn" id="`7Z``Kvj1Aty1$xX=?sf">
+                            <mutation name="Parar Motores"></mutation>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
                   </block>
-                </next>
+                </statement>
               </block>
-            </statement>
+            </next>
           </block>
         </next>
       </block>
-    </next>
+    </statement>
+  </block>
+  <block type="procedures_callnoreturn" id="UC9*jG*cdf20e:rnJIAW" x="262" y="-163">
+    <mutation name="Exemplo Seguir linha"></mutation>
   </block>
 </xml>
