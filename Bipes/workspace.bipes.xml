@@ -1,9 +1,9 @@
 <xml xmlns="https://bipes.net.br">
   <workspace>
-    <field name="DEVICE">ESP32</field>
-    <field name="TIMESTAMP">1664893732570</field>
+    <field name="DEVICE">ESP8266</field>
+    <field name="TIMESTAMP">1664917293627</field>
     <freeboard><![CDATA[{"version":1,"allow_edit":true,"plugins":[],"panes":[],"datasources":[],"columns":3}]]></freeboard>
-    <databoard><![CDATA[{"currentWorkspace":"l8lp0vtxk4or2r948l","workspace:l8lp0vtxk4or2r948l":[]}]]></databoard> 
+    <databoard><![CDATA[{"currentWorkspace":"kvflqzky5js84d7x5pe","workspace:kvflqzky5js84d7x5pe":[]}]]></databoard> 
   </workspace>
   <variables>
     <variable id="d.8aRL!d#HJTrw`y4ebJ">perc</variable>
@@ -304,7 +304,7 @@
                     </value>
                     <next>
                       <block type="gpio_interrupt" id="{0-hv%E#Sr+p4{fl|8{)">
-                        <field name="trigger">BOTH</field>
+                        <field name="trigger">IRQ_RISING</field>
                         <value name="pin">
                           <shadow xmlns="https://bipes.net.br" type="pinout" id="o-`({M{[c_ZN)+s5#G;+">
                             <field name="DEVICE">ESP32</field>
@@ -1401,7 +1401,7 @@
       </block>
     </statement>
   </block>
-  <block type="procedures_callnoreturn" id="UC9*jG*cdf20e:rnJIAW" x="262" y="-163">
+  <block type="procedures_callnoreturn" id="UC9*jG*cdf20e:rnJIAW" x="277" y="-131">
     <mutation name="Exemplo Seguir linha"></mutation>
   </block>
 </xml>
