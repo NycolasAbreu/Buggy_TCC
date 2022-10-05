@@ -33,7 +33,7 @@ class Encoder:
         return self.rpm
 
 if __name__ == "__main__":
-    encoder1 = Encoder(2)
+    encoder1 = Encoder(15)
     encoder2 = Encoder(4)
     while True:
         print("rpm1:{0} rpm2:{1}".format(encoder1.monitorRPM(), encoder2.monitorRPM()))

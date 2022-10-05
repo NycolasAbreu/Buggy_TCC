@@ -5,7 +5,7 @@ from sensor_linha import SensorLinha
 from ultrassom import Ultrassom
 import time
 
-PIN_ENC1 = 2
+PIN_ENC1 = 15
 PIN_ENC2 = 4
 
 def MostrarSensores(ultrassom, sensoresLinha, encoder1, encoder2, baterias):
