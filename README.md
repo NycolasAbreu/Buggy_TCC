@@ -37,7 +37,7 @@ O projeto segue as informações disponíveis em https://github.com/xtarke/autom
 
 | ESP32 Pin | Signal |
 | --------- | ------ |
-| D2        | D0     |
+| D15       | D0     |
 | D4        | D1     |
 
 ### Sensor ótico
