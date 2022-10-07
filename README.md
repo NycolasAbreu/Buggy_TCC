@@ -1,7 +1,7 @@
 # Buggy_TCC
 
 O projeto segue as informações disponíveis em https://github.com/xtarke/automated_buggy
-
+___
 ## ESP32 Pinout
 
 ![ESP32 Pinout](./images/ESP32_Pinout.jpg "ESP32 Pinout")
@@ -53,12 +53,12 @@ O projeto segue as informações disponíveis em https://github.com/xtarke/autom
 | --------- | ------ |
 | TX        | TX     |
 | RX        | RX     |
-
+___
 ## Shield projeto
 
 ![Shield](./images/shield.png "Shield")
-
-## Exemplo de funcionamento no MicroBlocks
+___
+## Exemplo de funcionamento no MicroBlocks e Bipes
 
 - Recebe os valores dos sensores
 - Caso não tenha obstáculo, seguirá em frente
@@ -66,13 +66,15 @@ O projeto segue as informações disponíveis em https://github.com/xtarke/autom
 - Caso tenha obstáculo na esquerda, se move a esquerda
 - Caso tenha obstáculo em ambos os lados, para os motores
 
-![Seguir Linha](./images/Exemplo%20seguidor%20de%20linha.png "Seguir Linha")
+![Seguir Linha Microblocks](./images/Exemplo%20seguidor%20de%20linha.png "Seguir Linha Microblocks")
 
+![Seguir Linha Bipes](./images/Exemplo%20seguidor%20de%20linha%20bipes.png "Seguir Linha Bipes")
+___
 ## Block IDEs
 
 - https://microblocks.fun/
 - http://bipes.net.br/ide/
-
+___
 ## Temporário
 
 - https://randomnerdtutorials.com/esp32-pinout-reference-gpios/
