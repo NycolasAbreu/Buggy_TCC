@@ -21,7 +21,7 @@ class SensorLinha:
         self.amostras_esquerda = self.CONTAGEM
 
         self.tim1 = Timer(1)
-        self.init_timer()
+        self._init_timer()
     
     def _recebe_valores(self, t):
         if (self.sensor_direita.value() != self.estado_direita):
@@ -46,7 +46,7 @@ class SensorLinha:
     def esquerda(self):
         return self.estado_esquerda
 
-    def init_timer(self, period_ms = 5):
+    def _init_timer(self, period_ms = 5):
         self.tim1.init(period=period_ms, mode=Timer.PERIODIC, callback=self._recebe_valores)
     
 if __name__ == '__main__':

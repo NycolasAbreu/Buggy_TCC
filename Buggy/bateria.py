@@ -23,7 +23,7 @@ class Baterias:
         self.bat2.atten(ADC.ATTN_11DB)
 
         self.tim2 = Timer(2)
-        self.init_timer()
+        self._init_timer()
     
     def _recebe_valores(self, t):
         self.bat1_volts = self.bat1.read()
@@ -35,7 +35,7 @@ class Baterias:
     def bateria2(self):
         return self.bat2_volts * self.FATOR_ADC
 
-    def init_timer(self, period_ms = 5000):  # Cria um timer para atualizar os valores a cada 5s
+    def _init_timer(self, period_ms = 5000):  # Cria um timer para atualizar os valores a cada 5s
         self.tim2.init(period=period_ms, mode=Timer.PERIODIC, callback=self._recebe_valores)
     
 if __name__ == '__main__':

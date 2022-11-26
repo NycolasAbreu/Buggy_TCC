@@ -19,7 +19,7 @@ class Ultrassom:
         self.echo = Pin(self.ECHO0, mode=Pin.IN, pull=None)
         
         self.tim0 = Timer(0)
-        self.init_timer()
+        self._init_timer()
 
     def _envia_pulso_e_espera(self, t):
         self.trigger.value(0) # Aguarda a estabilizacao do sensor
@@ -36,7 +36,7 @@ class Ultrassom:
         cms = (self.pulse_time / 2) / 29.1375
         return cms
 
-    def init_timer(self, period_ms = 500):  # Cria um timer para atualizar o pulse_time a cada 500ms
+    def _init_timer(self, period_ms = 500):  # Cria um timer para atualizar o pulse_time a cada 500ms
         self.tim0.init(period=period_ms, mode=Timer.PERIODIC, callback=self._envia_pulso_e_espera)
 
 if __name__ == '__main__':
